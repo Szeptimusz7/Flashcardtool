@@ -44,6 +44,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -486,19 +487,7 @@ public class FoablakController implements Initializable, Feliratok {
             primaryStage.setScene(scene);
             primaryStage.show();
             
-            tblTablazat.setRowFactory( tv -> {
-                TableRow<Sor> row = new TableRow<>();
-                row.setOnMouseClicked(event -> {
-                    if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                        try {
-                            tanulandoMent();
-                        } catch (Exception e) {
-                            hiba(uzenetek.get("hiba"),e.getMessage());
-                        }
-                    }
-                });
-                return row ;
-            });
+            duplakattEsTanulandoSorSzinezes();
         }
         
     }
@@ -540,6 +529,37 @@ public class FoablakController implements Initializable, Feliratok {
         
     }
 
+    public void duplakattEsTanulandoSorSzinezes() {
+        tblTablazat.setRowFactory(yourTable -> {
+                TableRow<Sor> row = new TableRow<Sor>() {
+                    @Override
+                    protected void updateItem(Sor item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null) {
+                            setStyle("");
+                        } else if (item.isTanulando()) {
+                            setStyle("-fx-background-color: #5dadec;");   
+                        } else {
+                            setStyle("");
+                        }
+                    }
+                };
+
+                row.setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                        try {
+                            tanulandoMent();
+                        } catch (Exception e) {
+                            hiba(uzenetek.get("hiba"),e.getMessage());
+                        }
+                    }
+                });
+
+                return row;
+            });
+            tblTablazat.refresh();
+    }
+    
     /**
      * Ha a feldolgozás után a lista nem üres, akkor a gomb megnyomása után megnyit egy új ablakot és 
      * átadja neki a szo és mondat String tartalmát. Ha az új ablakban a tanulandó szó sikeresen el lett mentve,
@@ -560,6 +580,9 @@ public class FoablakController implements Initializable, Feliratok {
         ablakotNyit("Forditas.fxml", uzenetek.get("forditashozzaadas"), szo, mondatok,true);
         if (ForditasController.isTanulandoElmentve()) {
             tblTablazat.getSelectionModel().getSelectedItem().setTanulando(true);
+            
+            duplakattEsTanulandoSorSzinezes();
+            
             letiltLeptet(TablaNevEleje + "tanulando");
             // Miután elmentette és léptetett a táblázatban, visszaállítja a ForditasController osztályban false-ra
             ForditasController.setTanulandoElmentve(false);
@@ -580,9 +603,9 @@ public class FoablakController implements Initializable, Feliratok {
     }
     
     /**
-     * Letiltja az adott táblázatbeli sor 3 gombjának (ismert, tanulandó, ignorált) használatát, tárolja
+     * Letiltja az adott táblázatbeli sor tanulandó gombjának használatát, tárolja
      * a tábla nevét ahova a beírás történt és kijelöli a táblázat következő elemét. Ha a táblázat utolsó
-     * eleménél tart, akkor a léptetés visszafelé történik, így az utolsó sor 3 gombja letiltottnak 
+     * eleménél tart, akkor a léptetés visszafelé történik, így az utolsó sor gombja letiltottnak 
      * fog látszódni kijelöléskor.
      * @param tabla A tábla, ahova az adatbázisban a szó el lett mentve
      */
@@ -616,6 +639,7 @@ public class FoablakController implements Initializable, Feliratok {
             Sor kivalasztottSor = tblTablazat.getSelectionModel().getSelectedItem();
             kivalasztottSor.setTilt(false);
             kivalasztottSor.setTanulando(false);
+            duplakattEsTanulandoSorSzinezes();
             btnTanulando.setDisable(false);
             DB.szotTorolAdatbazisbol(tabla, kivalasztottSor.getSzo());
             kivalasztottSor.setTabla(null);
