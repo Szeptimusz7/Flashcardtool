@@ -72,7 +72,10 @@ public class ForditasController implements Feliratok {
     private Button      btnKovetkezo;
     @FXML
     private WebView     wvOldal;
+    @FXML
+    private WebView     wvOldal2;
     private WebEngine   engine;
+    private WebEngine   engine2;
 
     private String         szo;
     private List<String>   mondatok;
@@ -93,6 +96,9 @@ public class ForditasController implements Feliratok {
      */
     public void setForditasAblakAdatok(String szo, List<String> mondatok, String forrasNyelvKod, String celNyelvKod) {
         engine = wvOldal.getEngine();
+        System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
+        
+        engine2 = wvOldal2.getEngine();
         System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
         
         this.szo = szo;
@@ -140,6 +146,11 @@ public class ForditasController implements Feliratok {
             engine.load("https://www.deepl.com/translator#"
                     + forrasNyelvKod + "/" + celNyelvKod
                     + "/" + szo);
+            
+            // Google Transle megnyitása a második webview-ban
+            engine2.load("https://translate.google.com/"
+                    + "?hl=" + celNyelvKod + "#view=home&op=translate&sl=" + forrasNyelvKod
+                    + "&tl=" + celNyelvKod + "&text=" + szo);
              
         });
         
