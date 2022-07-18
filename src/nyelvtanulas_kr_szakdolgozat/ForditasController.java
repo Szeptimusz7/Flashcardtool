@@ -1,8 +1,12 @@
 package nyelvtanulas_kr_szakdolgozat;
 
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -19,6 +23,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Window;
 import static nyelvtanulas_kr_szakdolgozat.FoablakController.uzenetek;
 import static nyelvtanulas_kr_szakdolgozat.Panel.figyelmeztet;
+import static nyelvtanulas_kr_szakdolgozat.Panel.hiba;
 
 /**
  * A Fordítás ablakot kezelő osztály. A Főablak táblázatában kiválasztott szó
@@ -120,11 +125,22 @@ public class ForditasController implements Feliratok {
                 
             });
             
+            /* Automatikusan kiszedi a DeepL oldaról a fordítást és bemásolja a tanulandó ablakba.
+            DE NEM MŰKÖDIK!!!  Talán azért mert a html kódban aria-hidden: true
+            engine.getLoadWorker().stateProperty().addListener(
+            (o, oldState, newState) -> {
+                if (newState == Worker.State.SUCCEEDED) {
+                   String value = engine.getDocument().getElementById("target-dummydiv").getTextContent();
+                    txtForditas.setText(value);
+                }
+            });
+            */
+                      
             // Megnyitja a DeepL-t. Minta: https://www.deepl.com/translator#en/hu/cheese
             engine.load("https://www.deepl.com/translator#"
                     + forrasNyelvKod + "/" + celNyelvKod
                     + "/" + szo);
-            
+             
         });
         
         // Az ablak feliratainak beállítása a megfelelő nyelven

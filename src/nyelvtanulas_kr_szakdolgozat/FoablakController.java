@@ -44,7 +44,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -240,10 +239,10 @@ public class FoablakController implements Initializable, Feliratok {
                     szotagokSzama += sc.count(szo);
 
                     String megtisztitottSzo = megtisztit(szo);
-                    // Ha még a megtisztítás után is több mint 30 karakter a szó, akkor valószínűleg a belsejében van sok nem megfelelő
+                    // Ha még a megtisztítás után is több mint 40 karakter a szó, akkor valószínűleg a belsejében van sok nem megfelelő
                     // karakter, ezért nem dolgozzuk fel. Illetve ha 2-nél kevesebb karakterből áll.
                     int szoHossza = megtisztitottSzo.length();
-                    if (szoHossza > 30 || szoHossza < 2) continue;
+                    if (szoHossza > 40 || szoHossza < 2) continue;
 
                     data.add(new Sor(megtisztitottSzo.toLowerCase(), megtisztit(mondat), 1));
                 }
@@ -449,7 +448,6 @@ public class FoablakController implements Initializable, Feliratok {
 
                     progressbarJelenlegiErtek = 1;
                     pbarOldal.setProgress(1.0 * progressbarJelenlegiErtek / progressbarMaximumErtek);
-                    System.out.println(1.0 * progressbarJelenlegiErtek / progressbarMaximumErtek);
                 }
                 
                 
@@ -495,6 +493,25 @@ public class FoablakController implements Initializable, Feliratok {
     @FXML
     void kovetkezooldal() {
         if (data.isEmpty()) return;
+        txaMondat.setText("");
+        
+        // A következő oldal gomb megnyomása után 1 másodpercig nem lehet újra rákattintani
+        new Thread() {
+            public void run() {
+                Platform.runLater(() -> {
+                    btnKovetkezoOldal.setDisable(true);
+                });
+                try {
+                    Thread.sleep(1000);
+                }
+                catch(InterruptedException ex) {
+                }
+                Platform.runLater(() -> {
+                    btnKovetkezoOldal.setDisable(false);
+                });
+            }
+        }.start();
+        
         pbarOldal.setProgress(++progressbarJelenlegiErtek * 1.0 / progressbarMaximumErtek);
 
         for (; dataIndex < vegPont; dataIndex++) {
