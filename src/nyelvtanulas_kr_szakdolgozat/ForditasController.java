@@ -2,6 +2,7 @@ package nyelvtanulas_kr_szakdolgozat;
 
 import java.awt.Desktop;
 import java.io.IOException;
+import java.net.CookieManager;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -23,7 +24,6 @@ import javafx.scene.web.WebView;
 import javafx.stage.Window;
 import static nyelvtanulas_kr_szakdolgozat.FoablakController.uzenetek;
 import static nyelvtanulas_kr_szakdolgozat.Panel.figyelmeztet;
-import static nyelvtanulas_kr_szakdolgozat.Panel.hiba;
 
 /**
  * A Fordítás ablakot kezelő osztály. A Főablak táblázatában kiválasztott szó
@@ -135,7 +135,7 @@ public class ForditasController implements Feliratok {
                 }
             });
             */
-                      
+                 
             // Megnyitja a DeepL-t. Minta: https://www.deepl.com/translator#en/hu/cheese
             engine.load("https://www.deepl.com/translator#"
                     + forrasNyelvKod + "/" + celNyelvKod

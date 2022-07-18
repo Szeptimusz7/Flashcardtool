@@ -104,7 +104,8 @@ public interface Feliratok {
         "Célnyelv (ismert nyelv):",
         "Sorok száma a táblázatban:",
         "Mentés",
-        "Mégse"
+        "Mégse",
+        "Forrás nyelv:"
     };
     
     public static final HashMap<String, String> UZENETEK_MAGYAR = new HashMap<String, String>() {{
@@ -259,7 +260,8 @@ public interface Feliratok {
         "Your language:",
         "Number of rows in the table:",
         "Save",
-        "Cancel"
+        "Cancel",
+        "Default Source Language:"
     };
     
     public static final HashMap<String, String> UZENETEK_ANGOL = new HashMap<String, String>() {{
@@ -414,7 +416,8 @@ public interface Feliratok {
          "Idioma de destino (idioma conocido):",
          "Número de filas en la tabla:",
          "Rescate",
-         "Cancelar"
+         "Cancelar",
+         "Idioma de origen predeterminado:"
     };
     
     public static final HashMap<String, String> UZENETEK_SPANYOL = new HashMap<String, String>() {{
@@ -571,7 +574,8 @@ public interface Feliratok {
          "Langue cible (langue connue):",
          "Nombre de lignes du tableau:",
          "Porter secours",
-         "Annuler"
+         "Annuler",
+         "Langue source par défaut:"
     };
     
     public static final HashMap<String, String> UZENETEK_FRANCIA = new HashMap<String, String>() {{
@@ -727,7 +731,8 @@ public interface Feliratok {
          "Zielsprache (bekannte Sprache):",
          "Anzahl der Zeilen in der Tabelle:",
          "Rettung",
-         "Stornieren"
+         "Stornieren",
+         "Standardquellsprache:"
     };
     
     public static final HashMap<String, String> UZENETEK_NEMET = new HashMap<String, String>() {{
@@ -882,7 +887,8 @@ public interface Feliratok {
          "Lingua di destinazione (lingua conosciuta):",
          "Numero di righe nella tabella:",
          "Salvare",
-         "Annulla"
+         "Annulla",
+         "Lingua di origine predefinita:"
     };
     
     public static final HashMap<String, String> UZENETEK_OLASZ = new HashMap<String, String>() {{
@@ -1037,7 +1043,8 @@ public interface Feliratok {
          "Idioma de destino (idioma conhecido):",
          "Número de linhas na tabela:",
          "Resgate",
-         "Cancelar"
+         "Cancelar",
+         "Idioma de origem padrão:"
     };
     
     public static final HashMap<String, String> UZENETEK_PORTUGAL = new HashMap<String, String>() {{
@@ -1192,7 +1199,8 @@ public interface Feliratok {
          "Doeltaal (bekende taal):",
          "Aantal rijen in de tabel:",
          "Redden",
-         "Annuleren"
+         "Annuleren",
+         "Standaard brontaal:"
     };
     
     public static final HashMap<String, String> UZENETEK_HOLLAND = new HashMap<String, String>() {{
@@ -1347,7 +1355,8 @@ public interface Feliratok {
          "Język docelowy (znany język):",
          "Liczba wierszy w tabeli:",
          "Ratować",
-         "Anuluj"
+         "Anuluj",
+         "Domyślny język źródłowy:"
     };
     
     public static final HashMap<String, String> UZENETEK_LENGYEL = new HashMap<String, String>() {{
@@ -1502,7 +1511,8 @@ public interface Feliratok {
          "Målsprog (kendt sprog):",
          "Antal rækker i tabellen:",
          "Redde",
-         "Afbestille"
+         "Afbestille",
+         "Standard kildesprog:"
     };
     
     public static final HashMap<String, String> UZENETEK_DAN = new HashMap<String, String>() {{
@@ -1657,7 +1667,8 @@ public interface Feliratok {
          "Target language (known language):",
          "Počet řádků v tabulce:",
          "Zachránit",
-         "Zrušení"
+         "Zrušení",
+         "Výchozí zdrojový jazyk:"
     };
     
     public static final HashMap<String, String> UZENETEK_CSEH = new HashMap<String, String>() {{
@@ -1812,7 +1823,8 @@ public interface Feliratok {
          "Cieľový jazyk (známy jazyk):",
          "Počet riadkov v tabuľke:",
          "Záchranný",
-         "Zrušiť"
+         "Zrušiť",
+         "Predvolený zdrojový jazyk:"
     };
     
     public static final HashMap<String, String> UZENETEK_SZLOVAK = new HashMap<String, String>() {{
@@ -1967,7 +1979,8 @@ public interface Feliratok {
          "Ciljni jezik (znani jezik):",
          "Število vrstic v tabeli:",
          "Reševanje",
-         "Prekliči"
+         "Prekliči",
+         "Privzeti izvorni jezik:"
     };
     
     public static final HashMap<String, String> UZENETEK_SZLOVEN = new HashMap<String, String>() {{

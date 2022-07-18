@@ -64,7 +64,6 @@ public class FoablakController implements Initializable, Feliratok {
 
     String fajlUtvonal;
     String TablaNevEleje;
-    String forrasNyelvKod;
     String mappaUtvonal = System.getProperty("user.home");
     int    eredetiOsszesSzo;
     int    toroltSzavak;
@@ -83,8 +82,9 @@ public class FoablakController implements Initializable, Feliratok {
     static HashMap<String, String>  kodhozNyelv   = new HashMap<>();
     static HashMap<String, String>  uzenetek      = new HashMap<>();
     static int       beolvasottSorokSzama;
+    static String    forrasNyelvKod = "";
     static String    celNyelvKod;
-    static String    feluletNyelve;
+    static String    feluletNyelveKod;
     static String    feluletNyelvenekNeveAdottNyelven;
     static String [] foablakFelirat;
     static String [] ankiFelirat;
@@ -680,7 +680,7 @@ public class FoablakController implements Initializable, Feliratok {
     @FXML
     public void beallitasokAblak() { 
         ablakotNyit("Beallitasok.fxml",uzenetek.get("beallitasok"),"",null,false);
-        foablakFeliratokatBeallit(feluletNyelve);
+        foablakFeliratokatBeallit(feluletNyelveKod);
     }
     
     /**
@@ -777,30 +777,33 @@ public class FoablakController implements Initializable, Feliratok {
             
             try (Scanner be = new Scanner(new File(utvonal + "\\flashcardtoolSettings.txt"))) {
                 
-                String felNyelv = be.nextLine();
-                feluletNyelve = felNyelv;
-                foablakFeliratokatBeallit(felNyelv);
+                feluletNyelveKod = be.nextLine();
+                foablakFeliratokatBeallit(feluletNyelveKod);
                 
+                forrasNyelvKod = be.nextLine();
                 celNyelvKod = be.nextLine();
                 beolvasottSorokSzama = Integer.parseInt(be.nextLine());
                 
             } catch (FileNotFoundException e) {
                 
                 Locale currentLocale = Locale.getDefault();
-                String helyiNyelv = currentLocale.getDisplayLanguage();
-                feluletNyelve = helyiNyelv;
-                foablakFeliratokatBeallit(helyiNyelv);
+                String helyiNyelvKod = currentLocale.getLanguage();
+                
+                feluletNyelveKod = helyiNyelvKod;
+                foablakFeliratokatBeallit(helyiNyelvKod);
                 
                 try (PrintWriter ki = new PrintWriter(utvonal + "\\flashcardtoolSettings.txt")) { 
                     
-                    // Fájlba írja a 3 beállítást
-                    ki.println(helyiNyelv);
-                    ki.println(nyelvekKodja.get(helyiNyelv.substring(0,1).toUpperCase() + helyiNyelv.substring(1)));
+                    // Fájlba írja a 4 beállítást
+                    ki.println(helyiNyelvKod);
+                    ki.println("NoDefaultSourceLanguageSet");
+                    ki.println(helyiNyelvKod);
                     ki.println("15");
                     
                     // Static változóba menti a beállításokat
-                    foablakFeliratokatBeallit(helyiNyelv);
-                    celNyelvKod = nyelvekKodja.get(helyiNyelv.substring(0,1).toUpperCase() + helyiNyelv.substring(1));
+                    forrasNyelvKod = "NoDefaultSourceLanguageSet";
+                    foablakFeliratokatBeallit(helyiNyelvKod);
+                    celNyelvKod = helyiNyelvKod;
                     beolvasottSorokSzama = 15;
                     
                 } catch (IOException ex) {
@@ -809,7 +812,10 @@ public class FoablakController implements Initializable, Feliratok {
                 
             }
             
-  
+        // Forrás-nyelv kitöltése ha a beállításokban be van állítva egy
+        if (!forrasNyelvKod.equals("NoDefaultSourceLanguageSet")) {
+            cbxForras.setValue(kodhozNyelv.get(forrasNyelvKod));
+        }
             
         // Adatbázis elérési útvonalát beállítja, ha nincs adatbázis akkor létrehozza
         DB.adatbazistKeszit("\\nyelvtanulas.db");
@@ -823,7 +829,7 @@ public class FoablakController implements Initializable, Feliratok {
      */
     public void foablakFeliratokatBeallit(String nyelv) {
         
-        if (nyelv.matches("magyar|Magyar|Hungarian|hungarian|húngaro|Húngaro|hongrois|Hongrois|ungarisch|Ungarisch|ungherese|Ungherese|húngaro|Húngaro|Hongaars|hongaars|język węgierski|Język węgierski|Ungarsk|ungarsk|maďarský|Maďarský|Maďarský|maďarský|Madžarsko|madžarsko|Węgierski|węgierski|Madžarščina|madžarščina|Maďarčina|maďarčina|Maďarština|maďarština")) {
+        if (nyelv.equals("hu")) {
             
                 feluletNyelvenekNeveAdottNyelven = "Magyar";
             
@@ -837,8 +843,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_MAGYAR;
                 beallitasokFelirat = BEALLITASOK_MAGYARFELIRATOK;
                 
-        } else if (nyelv.matches("english|English|angol|Angol|Anglais|anglais|Inglés|inglés|Englisch|englisch|Inglese|inglese|Inglês|inglês|Engels|engels|język angielski|Język angielski|engelsk|Engelsk|Angličtina|angličtina|Angličtina|angličtina|angleščina|Angleščina|Angielski|angielski")) {
-
+        } else if (nyelv.equals("en")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "English";
             
                 foablakFelirat     = FOABLAK_ANGOLFELIRATOK;
@@ -852,8 +858,8 @@ public class FoablakController implements Initializable, Feliratok {
                 beallitasokFelirat = BEALLITASOK_ANGOLFELIRATOK;
               
                 
-        } else if (nyelv.matches("Español|español|Espagnol|espagnol|Spanyol|spanyol|Spanish|spanish|Spanisch|spanisch|spagnolo|Spagnolo|espanhol|Espanhol|Spaans|spaans|hiszpański|Hiszpański|spansk|Spansk|španělština|Španělština|Španielsky|španielsky|španski|Španski|Španielčina|španielčina|Španščina|španščina")) {
-
+        } else if (nyelv.equals("es")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Español";
             
                 foablakFelirat     = FOABLAK_SPANYOLFELIRATOK;
@@ -867,8 +873,8 @@ public class FoablakController implements Initializable, Feliratok {
                 beallitasokFelirat = BEALLITASOK_SPANYOLFELIRATOK;
                 
                 
-        } else if (nyelv.matches("français|Français|francés|Francés|French|french|Francia|francia|Französisch|französisch|francese|Francese|francês|Francês|Frans|frans|Francuski|francuski|fransk|Fransk|francouzština|Francouzština|Francúzsky|francúzsky|Francosko|francosko|Francúzština|francúzština|Francoščina|francoščina")) {
-
+        } else if (nyelv.equals("fr")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Français";
             
                 foablakFelirat     = FOABLAK_FRANCIAFELIRATOK;
@@ -881,8 +887,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_FRANCIA;
                 beallitasokFelirat = BEALLITASOK_FRANCIAFELIRATOK;
                 
-        } else if (nyelv.matches("német|Német|deutsch|Deutsch|german|German|alemán|Alemán|allemand|Allemand|tedesco|Tedesco|alemão|Alemão|duitse|Duitse|niemiecki|Niemiecki|tysk|Tysk|němec|Němec|Nemecky|nemecky|Nemško|nemško|Duits|duits|Němčina|němčina|Nemčina|nemčina|Nemščina|nemščina")) {
-
+        } else if (nyelv.equals("de")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Deutsch";
             
                 foablakFelirat     = FOABLAK_NEMETFELIRATOK;
@@ -895,8 +901,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_NEMET;
                 beallitasokFelirat = BEALLITASOK_NEMETFELIRATOK;  
               
-        } else if (nyelv.matches("olasz|Olasz|italian|Italian|italiano|Italiano|italien|Italien|Italienisch|italienisch|Italiaans|italiaans|Włoski|włoski|Italiensk|italiensk|italština|Italština|Taliansky|taliansky|Italijansko|italijansko|Italiaans|italiaans|Taliančina|taliančina|Italijanščina|italijanščina")) {
-
+        } else if (nyelv.equals("it")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Italiano";
             
                 foablakFelirat     = FOABLAK_OLASZFELIRATOK;
@@ -909,8 +915,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_OLASZ;
                 beallitasokFelirat = BEALLITASOK_OLASZFELIRATOK;
                 
-        } else if (nyelv.matches("portugál|Portugál|Portuguese|portuguese|portugués|Portugués|Portugais|portugais|Portugiesisch|portugiesisch|portoghese|Portoghese|Português|português|Portugees|portugees|portugalski|Portugalski|Portugisisk|portugisisk|portugalština|Portugalština|Portugalčina|portugalčina|Portugalščina|portugalščina")) {
-
+        } else if (nyelv.equals("pt")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Português";
             
                 foablakFelirat     = FOABLAK_PORTUGALFELIRATOK;
@@ -923,8 +929,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_PORTUGAL;
                 beallitasokFelirat = BEALLITASOK_PORTUGALFELIRATOK; 
                
-        } else if (nyelv.matches("holland|Holland|Dutch|dutch|holandés|Holandés|néerlandais|Néerlandais|Niederländisch|niederländisch|olandese|Olandese|holandês|Holandês|Nederlands|nederlands|holenderski|Holenderski|hollandske|Hollandske|holandský|Holandský|Holandsky|holandsky|Nizozemsko|nizozemsko|Niderlandzki|niderlandzki|Hollandsk|hollandsk|Holandština|holandština|Holandčina|holandčina|Nizozemščina|nizozemščina")) {
-
+        } else if (nyelv.equals("nl")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Nederlands";
             
                 foablakFelirat     = FOABLAK_HOLLANDFELIRATOK;
@@ -937,8 +943,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_HOLLAND;
                 beallitasokFelirat = BEALLITASOK_HOLLANDFELIRATOK;    
              
-        } else if (nyelv.matches("lengyel|Lengyel|Polish|polish|polaco|Polaco|polonais|Polonais|Polieren|polieren|polacco|Polacco|polonês|Polonês|Pools|pools|Polskie|polskie|Polere|polere|polština|Polština|Poľský|poľský|Poljski|poljski|Polnisch|polnisch|Polski|polski|Polsk|polsk|Poľština|poľština|Poljščina|poljščina")) {
-
+        } else if (nyelv.equals("pl")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Polskie";
             
                 foablakFelirat     = FOABLAK_LENGYELFELIRATOK;
@@ -951,8 +957,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_LENGYEL;
                 beallitasokFelirat = BEALLITASOK_LENGYELFELIRATOK; 
                 
-        } else if (nyelv.matches("dán|Dán|Danish|danish|danés|Danés|danois|Danois|dänisch|Dänisch|danese|Danese|dinamarquês|Dinamarquês|Deens|deens|duński|Duński|dansk|Dansk|dánština|Dánština|Dánsky|dánsky|Danski|danski|Dánčina|dánčina|Danska|danska")) {
-
+        } else if (nyelv.equals("da")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Dansk";
             
                 foablakFelirat     = FOABLAK_DANFELIRATOK;
@@ -965,8 +971,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_DAN;
                 beallitasokFelirat = BEALLITASOK_DANFELIRATOK;
                 
-        } else if (nyelv.matches("cseh|Cseh|Czech|czech|checo|Checo|tchèque|Tchèque|Tschechisch|tschechisch|ceco|Ceco|Tcheco|tcheco|Tsjechisch|tsjechisch|Czech|czech|Tjekkisk|tjekkisk|čeština|Čeština|Česky|česky|Češko|češko|Czeski|czeski|Češčina|češčina")) {
-
+        } else if (nyelv.equals("cs")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Čeština";
             
                 foablakFelirat     = FOABLAK_CSEHFELIRATOK;
@@ -979,8 +985,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_CSEH;
                 beallitasokFelirat = BEALLITASOK_CSEHFELIRATOK;
               
-        } else if (nyelv.matches("szlovák|Szlovák|Slovak|slovak|eslovaco|Eslovaco|slovaque|Slovaque|slowakisch|Slowakisch|Slovacco|slovacco|Eslovaco|eslovaco|Slowaaks|slowaaks|słowacki|Słowacki|Slovakisk|slovakisk|Slovák|slovák|Slovaški|slovaški|Slovenština|slovenština|Slovenčina|slovenčina|Slovaščina|slovaščina")) {
-
+        } else if (nyelv.equals("sk")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Slovák";
             
                 foablakFelirat     = FOABLAK_SZLOVAKFELIRATOK;
@@ -993,8 +999,8 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_SZLOVAK;
                 beallitasokFelirat = BEALLITASOK_SZLOVAKFELIRATOK;
                 
-        } else if (nyelv.matches("szlovén|Szlovén|Slovenian|slovenian|esloveno|Esloveno|slovène|Slovène|Slowenisch|slowenisch|sloveno|Sloveno|esloveno|Esloveno|Sloveens|sloveens|słoweński|Słoweński|Slovensk|slovensk|slovinský|Slovinský|Slovinsky|slovinsky|Slovenščina|slovenščina|Slovinština|slovinština|Slovinčina|slovinčina|Slovenščina|slovenščina")) {
-
+        } else if (nyelv.equals("sl")) {
+            
                 feluletNyelvenekNeveAdottNyelven = "Slovenščina";
             
                 foablakFelirat     = FOABLAK_SZLOVENFELIRATOK;
@@ -1031,6 +1037,10 @@ public class FoablakController implements Initializable, Feliratok {
         for (int i = 0; i < nyelvek.length; i++) {
             nyelvekKodja.put(nyelvek[i], roviditettNyelv[i]);
             kodhozNyelv.put(roviditettNyelv[i], nyelvek[i]);
+        }
+        
+        if (!forrasNyelvKod.equals("NoDefaultSourceLanguageSet")) {
+            cbxForras.setValue(kodhozNyelv.get(forrasNyelvKod));
         }
         
         menuOpciok.setText(foablakFelirat[0]);

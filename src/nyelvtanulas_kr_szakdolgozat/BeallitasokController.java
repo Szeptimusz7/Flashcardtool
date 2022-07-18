@@ -20,6 +20,8 @@ import static nyelvtanulas_kr_szakdolgozat.Panel.hiba;
 public class BeallitasokController implements Initializable {
     
     @FXML
+    private Label            lblForrasNyelv;
+    @FXML
     private Label            lblCelnyelv;
     @FXML
     private Label            lblBeallitasok;
@@ -32,7 +34,9 @@ public class BeallitasokController implements Initializable {
     @FXML
     private TextField        txtSorokSzama;
     @FXML
-    private ComboBox<String> cbxNyelvek;
+    private ComboBox<String> cbxForrasNyelv;
+    @FXML
+    private ComboBox<String> cbxCelnyelv;
     @FXML
     private Label            lblFeluletNyelve;
     @FXML
@@ -41,8 +45,9 @@ public class BeallitasokController implements Initializable {
     
     @FXML
     void ment() {
-        String feluletNyelve = cbxFeluletNyelve.getValue();
-        String celNyelvKod   = FoablakController.nyelvekKodja.get(cbxNyelvek.getValue());
+        String feluletNyelve  = cbxFeluletNyelve.getValue();
+        String forrasNyelvKod = FoablakController.nyelvekKodja.get(cbxForrasNyelv.getValue());
+        String celNyelvKod    = FoablakController.nyelvekKodja.get(cbxCelnyelv.getValue());
         
         int sorokSzama;
         try {
@@ -52,19 +57,22 @@ public class BeallitasokController implements Initializable {
             return;
         }
         
-        if (feluletNyelve == null || celNyelvKod == null) {
+        if (feluletNyelve == null || celNyelvKod == null || forrasNyelvKod == null) {
             hiba(uzenetek.get("hiba"),uzenetek.get("adjonmegmindenadatot"));
             return;
         }
         
-        FoablakController.celNyelvKod = celNyelvKod;
+        FoablakController.feluletNyelveKod = FoablakController.nyelvekKodja.get(feluletNyelve);
+        FoablakController.forrasNyelvKod   = forrasNyelvKod;
+        FoablakController.celNyelvKod      = celNyelvKod;
         FoablakController.beolvasottSorokSzama = sorokSzama;
         
         String utvonal = System.getProperty("user.home");
         
         try (PrintWriter ki = new PrintWriter(utvonal + "\\flashcardtoolSettings.txt")) {
             
-            ki.println(feluletNyelve);
+            ki.println(FoablakController.nyelvekKodja.get(feluletNyelve));
+            ki.println(forrasNyelvKod);
             ki.println(celNyelvKod);
             ki.println(sorokSzama);
             
@@ -73,15 +81,13 @@ public class BeallitasokController implements Initializable {
             return;
         }
         
-        FoablakController.feluletNyelve = feluletNyelve;
-        
-        Window ablak = cbxNyelvek.getScene().getWindow();
+        Window ablak = cbxCelnyelv.getScene().getWindow();
         ablak.hide();
     }
     
     @FXML
     void megse() {
-        Window ablak = cbxNyelvek.getScene().getWindow();
+        Window ablak = cbxCelnyelv.getScene().getWindow();
         ablak.hide();
     }
 
@@ -94,12 +100,18 @@ public class BeallitasokController implements Initializable {
         lblSorokSzama.setText(FoablakController.beallitasokFelirat[3]);
         btnMentes.setText(FoablakController.beallitasokFelirat[4]);
         btnMegse.setText(FoablakController.beallitasokFelirat[5]);
+        lblForrasNyelv.setText(FoablakController.beallitasokFelirat[6]);
         
         cbxFeluletNyelve.getItems().addAll(FoablakController.nyelvek);
-        cbxNyelvek.getItems().addAll(FoablakController.nyelvek);
+        cbxForrasNyelv.getItems().addAll(FoablakController.nyelvek);
+        cbxCelnyelv.getItems().addAll(FoablakController.nyelvek);
+        
         
         cbxFeluletNyelve.setValue(FoablakController.feluletNyelvenekNeveAdottNyelven);
-        cbxNyelvek.setValue(FoablakController.kodhozNyelv.get(FoablakController.celNyelvKod));
+        if (!FoablakController.forrasNyelvKod.equals("NoDefaultSourceLanguageSet")) {
+            cbxForrasNyelv.setValue(FoablakController.kodhozNyelv.get(FoablakController.forrasNyelvKod));
+        }
+        cbxCelnyelv.setValue(FoablakController.kodhozNyelv.get(FoablakController.celNyelvKod));
         txtSorokSzama.setText(FoablakController.beolvasottSorokSzama + "");
     }
     
