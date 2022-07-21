@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import javafx.collections.ObservableList;
 import static nyelvtanulas_kr_szakdolgozat.FoablakController.uzenetek;
 import static nyelvtanulas_kr_szakdolgozat.Panel.hiba;
@@ -197,6 +198,81 @@ public class DB {
         try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
                 PreparedStatement ps2 = kapcs.prepareStatement(createIndex)) {
                 ps2.executeUpdate();
+        } catch (SQLException e) {
+            hiba(uzenetek.get("hiba"),e.getMessage());
+        }
+    }
+    
+    public static void beallitasTablatKeszit() {
+        String createTable = "CREATE TABLE IF NOT EXISTS settings " + "(beallitas_neve VARCHAR(20) UNIQUE, "
+                                                                     + "ertek VARCHAR(20))";
+        try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
+                PreparedStatement ps = kapcs.prepareStatement(createTable)) {
+                ps.executeUpdate();
+                
+        } catch (SQLException e) {
+            hiba(uzenetek.get("hiba"),e.getMessage());
+        }
+        
+        String into = "INSERT INTO settings (beallitas_neve, ertek) VALUES (?,?)";
+        try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
+                PreparedStatement ps = kapcs.prepareStatement(into)) {
+            
+            
+                Locale currentLocale = Locale.getDefault();
+                String helyiNyelvKod = currentLocale.getLanguage();
+                kapcs.setAutoCommit(false);
+                
+                ps.setString(1, "feluletNyelveSetting");
+                ps.setString(2, helyiNyelvKod);
+                ps.addBatch();
+                
+                ps.setString(1, "forrasNyelvSetting");
+                ps.setString(2, "en");
+                ps.addBatch();
+                
+                ps.setString(1, "celNyelvSetting");
+                ps.setString(2, helyiNyelvKod);
+                ps.addBatch();
+                
+                ps.setString(1, "sorokSzamaSetting");
+                ps.setString(2, "15");
+                ps.addBatch();
+                
+                ps.executeBatch();
+                kapcs.commit();
+                
+        } catch (SQLException e) {
+           
+        }
+    }
+    
+    
+    public static String beallitastLekerdez(String beallitasNeve) {
+        String update = "SELECT ertek FROM settings WHERE beallitas_neve = ?";
+        try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
+             PreparedStatement ps = kapcs.prepareStatement(update)) {
+            
+            ps.setString(1, beallitasNeve);
+            ResultSet eredmeny = ps.executeQuery();
+            String ertek = eredmeny.getString(1);
+            return ertek;
+                
+        } catch (SQLException e) {
+            hiba(uzenetek.get("hiba"),e.getMessage());
+            return "";
+        }
+    } 
+    
+    public static void beallitastModosit(String beallitasNeve, String ujErtek) {
+        String update = "UPDATE settings SET ertek = ? WHERE beallitas_neve = ?;";
+        try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
+             PreparedStatement ps = kapcs.prepareStatement(update)) {
+            
+                ps.setString(1, ujErtek);
+                ps.setString(2, beallitasNeve);
+                ps.executeUpdate();
+                
         } catch (SQLException e) {
             hiba(uzenetek.get("hiba"),e.getMessage());
         }

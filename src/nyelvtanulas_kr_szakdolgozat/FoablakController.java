@@ -239,10 +239,10 @@ public class FoablakController implements Initializable, Feliratok {
                     szotagokSzama += sc.count(szo);
 
                     String megtisztitottSzo = megtisztit(szo);
-                    // Ha még a megtisztítás után is több mint 40 karakter a szó, akkor valószínűleg a belsejében van sok nem megfelelő
+                    // Ha még a megtisztítás után is több mint 30 karakter a szó, akkor valószínűleg a belsejében van sok nem megfelelő
                     // karakter, ezért nem dolgozzuk fel. Illetve ha 2-nél kevesebb karakterből áll.
                     int szoHossza = megtisztitottSzo.length();
-                    if (szoHossza > 40 || szoHossza < 2) continue;
+                    if (szoHossza > 30 || szoHossza < 2) continue;
 
                     data.add(new Sor(megtisztitottSzo.toLowerCase(), megtisztit(mondat), 1));
                 }
@@ -752,73 +752,41 @@ public class FoablakController implements Initializable, Feliratok {
         };
         
         // Hotkey-k beállítása a főablak 3 elmentési és a visszavonási gombjára
-            Platform.runLater(() -> {
-                btnTanulando.getScene().setOnKeyPressed((final KeyEvent keyEvent) -> {
-                    if (keyEvent.getCode() == KeyCode.DIGIT1) {
-                        try {
-                            tanulandoMent();
-                        } catch (Exception ex) { Logger.getLogger(FoablakController.class.getName()).log(Level.SEVERE, null, ex); }
-                        
-                        keyEvent.consume();
-                    }
+        Platform.runLater(() -> {
+            btnTanulando.getScene().setOnKeyPressed((final KeyEvent keyEvent) -> {
+                if (keyEvent.getCode() == KeyCode.DIGIT1) {
+                    try {
+                        tanulandoMent();
+                    } catch (Exception ex) { Logger.getLogger(FoablakController.class.getName()).log(Level.SEVERE, null, ex); }
 
-                    if (keyEvent.getCode() == KeyCode.DIGIT2) {
-                        try {
-                            visszavon();
-                        } catch (Exception ex) { Logger.getLogger(FoablakController.class.getName()).log(Level.SEVERE, null, ex); }
-                        
-                        keyEvent.consume();
-                    }
-                });
-            });
-            
-            
-            String utvonal = System.getProperty("user.home");
-            
-            try (Scanner be = new Scanner(new File(utvonal + "\\flashcardtoolSettings.txt"))) {
-                
-                feluletNyelveKod = be.nextLine();
-                foablakFeliratokatBeallit(feluletNyelveKod);
-                
-                forrasNyelvKod = be.nextLine();
-                celNyelvKod = be.nextLine();
-                beolvasottSorokSzama = Integer.parseInt(be.nextLine());
-                
-            } catch (FileNotFoundException e) {
-                
-                Locale currentLocale = Locale.getDefault();
-                String helyiNyelvKod = currentLocale.getLanguage();
-                
-                feluletNyelveKod = helyiNyelvKod;
-                foablakFeliratokatBeallit(helyiNyelvKod);
-                
-                try (PrintWriter ki = new PrintWriter(utvonal + "\\flashcardtoolSettings.txt")) { 
-                    
-                    // Fájlba írja a 4 beállítást
-                    ki.println(helyiNyelvKod);
-                    ki.println("NoDefaultSourceLanguageSet");
-                    ki.println(helyiNyelvKod);
-                    ki.println("15");
-                    
-                    // Static változóba menti a beállításokat
-                    forrasNyelvKod = "NoDefaultSourceLanguageSet";
-                    foablakFeliratokatBeallit(helyiNyelvKod);
-                    celNyelvKod = helyiNyelvKod;
-                    beolvasottSorokSzama = 15;
-                    
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    keyEvent.consume();
                 }
-                
-            }
-            
-        // Forrás-nyelv kitöltése ha a beállításokban be van állítva egy
-        if (!forrasNyelvKod.equals("NoDefaultSourceLanguageSet")) {
-            cbxForras.setValue(kodhozNyelv.get(forrasNyelvKod));
-        }
-            
+
+                if (keyEvent.getCode() == KeyCode.DIGIT2) {
+                    try {
+                        visszavon();
+                    } catch (Exception ex) { Logger.getLogger(FoablakController.class.getName()).log(Level.SEVERE, null, ex); }
+
+                    keyEvent.consume();
+                }
+            });
+        });
+
         // Adatbázis elérési útvonalát beállítja, ha nincs adatbázis akkor létrehozza
         DB.adatbazistKeszit("\\nyelvtanulas.db");
+        DB.beallitasTablatKeszit();
+
+        String feluletNyelveSetting   = DB.beallitastLekerdez("feluletNyelveSetting");
+        String forrasNyelvSetting     = DB.beallitastLekerdez("forrasNyelvSetting");
+        String celNyelvSetting        = DB.beallitastLekerdez("celNyelvSetting");
+        int    sorokSzamaSetting      = Integer.parseInt(DB.beallitastLekerdez("sorokSzamaSetting"));
+        
+        feluletNyelveKod = feluletNyelveSetting;
+        forrasNyelvKod   = forrasNyelvSetting;
+        celNyelvKod      = celNyelvSetting;
+        beolvasottSorokSzama = sorokSzamaSetting;
+        foablakFeliratokatBeallit(feluletNyelveKod);
+        
     }
     
     /**
@@ -1039,9 +1007,7 @@ public class FoablakController implements Initializable, Feliratok {
             kodhozNyelv.put(roviditettNyelv[i], nyelvek[i]);
         }
         
-        if (!forrasNyelvKod.equals("NoDefaultSourceLanguageSet")) {
-            cbxForras.setValue(kodhozNyelv.get(forrasNyelvKod));
-        }
+        cbxForras.setValue(kodhozNyelv.get(forrasNyelvKod));
         
         menuOpciok.setText(foablakFelirat[0]);
         menuiAnki.setText(foablakFelirat[1]);

@@ -67,19 +67,10 @@ public class BeallitasokController implements Initializable {
         FoablakController.celNyelvKod      = celNyelvKod;
         FoablakController.beolvasottSorokSzama = sorokSzama;
         
-        String utvonal = System.getProperty("user.home");
-        
-        try (PrintWriter ki = new PrintWriter(utvonal + "\\flashcardtoolSettings.txt")) {
-            
-            ki.println(FoablakController.nyelvekKodja.get(feluletNyelve));
-            ki.println(forrasNyelvKod);
-            ki.println(celNyelvKod);
-            ki.println(sorokSzama);
-            
-        } catch (Exception e) {
-            hiba(uzenetek.get("hiba"), e.getMessage());
-            return;
-        }
+        DB.beallitastModosit("feluletNyelveSetting", FoablakController.nyelvekKodja.get(feluletNyelve));
+        DB.beallitastModosit("forrasNyelvSetting", forrasNyelvKod);
+        DB.beallitastModosit("celNyelvSetting", celNyelvKod);
+        DB.beallitastModosit("sorokSzamaSetting", (sorokSzama + ""));
         
         Window ablak = cbxCelnyelv.getScene().getWindow();
         ablak.hide();
@@ -108,9 +99,8 @@ public class BeallitasokController implements Initializable {
         
         
         cbxFeluletNyelve.setValue(FoablakController.feluletNyelvenekNeveAdottNyelven);
-        if (!FoablakController.forrasNyelvKod.equals("NoDefaultSourceLanguageSet")) {
-            cbxForrasNyelv.setValue(FoablakController.kodhozNyelv.get(FoablakController.forrasNyelvKod));
-        }
+        cbxForrasNyelv.setValue(FoablakController.kodhozNyelv.get(FoablakController.forrasNyelvKod));
+
         cbxCelnyelv.setValue(FoablakController.kodhozNyelv.get(FoablakController.celNyelvKod));
         txtSorokSzama.setText(FoablakController.beolvasottSorokSzama + "");
     }
