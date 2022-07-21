@@ -451,7 +451,7 @@ public class FoablakController implements Initializable, Feliratok {
                 }
                 
                 
-                // Első maximum 22 sor betöltése a táblázatba
+                // Első X sor betöltése a táblázatba
                 for (int i = 0; i < data.size(); i++) {
                     tblTablazat.getItems().add(data.get(i));
                     vegPont++;

@@ -1,13 +1,10 @@
 package nyelvtanulas_kr_szakdolgozat;
 
 import java.awt.Desktop;
-import java.io.IOException;
-import java.net.CookieManager;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 import java.net.URI;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -56,6 +53,8 @@ public class ForditasController implements Feliratok {
     private TextArea    txaMondat;
     @FXML
     private Button      btnEredetiPeldamondat;
+    @FXML
+    private Button      btnPeldamondatMasolasa;
     @FXML
     private Label       lblNagybetuvelKezdodjon;
     @FXML
@@ -250,6 +249,13 @@ public class ForditasController implements Feliratok {
     public void visszaallit() {
         txaMondat.setText(eredetiMondat);
         txaMondat.selectRange(mondatok.get(mondatIndex).indexOf(szo), mondatok.get(mondatIndex).indexOf(szo) + szo.length() + 1);
+    }
+    
+    @FXML
+    void peldamondatotMasol() {
+        StringSelection selection = new StringSelection(txaMondat.getText());
+        java.awt.datatransfer.Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, selection);
     }
     
     /**
