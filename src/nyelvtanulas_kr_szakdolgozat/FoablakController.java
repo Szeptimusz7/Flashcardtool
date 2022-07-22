@@ -2,9 +2,7 @@ package nyelvtanulas_kr_szakdolgozat;
 
 import eu.crydee.syllablecounter.SyllableCounter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,9 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -680,6 +676,7 @@ public class FoablakController implements Initializable, Feliratok {
     @FXML
     public void beallitasokAblak() { 
         ablakotNyit("Beallitasok.fxml",uzenetek.get("beallitasok"),"",null,false);
+        cxbEgyszer.setSelected(DB.beallitastLekerdez("egyszerSetting").equals("1"));
         foablakFeliratokatBeallit(feluletNyelveKod);
     }
     
@@ -780,6 +777,7 @@ public class FoablakController implements Initializable, Feliratok {
         String forrasNyelvSetting     = DB.beallitastLekerdez("forrasNyelvSetting");
         String celNyelvSetting        = DB.beallitastLekerdez("celNyelvSetting");
         int    sorokSzamaSetting      = Integer.parseInt(DB.beallitastLekerdez("sorokSzamaSetting"));
+        cxbEgyszer.setSelected(DB.beallitastLekerdez("egyszerSetting").equals("1"));
         
         feluletNyelveKod = feluletNyelveSetting;
         forrasNyelvKod   = forrasNyelvSetting;

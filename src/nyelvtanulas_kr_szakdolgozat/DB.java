@@ -204,7 +204,7 @@ public class DB {
     }
     
     public static void beallitasTablatKeszit() {
-        String createTable = "CREATE TABLE IF NOT EXISTS settings " + "(beallitas_neve VARCHAR(20) UNIQUE, "
+        String createTable = "CREATE TABLE IF NOT EXISTS settings " + "(beallitas_neve VARCHAR(30) UNIQUE, "
                                                                      + "ertek VARCHAR(20))";
         try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
                 PreparedStatement ps = kapcs.prepareStatement(createTable)) {
@@ -237,6 +237,10 @@ public class DB {
                 
                 ps.setString(1, "sorokSzamaSetting");
                 ps.setString(2, "15");
+                ps.addBatch();
+                
+                ps.setString(1, "egyszerSetting");
+                ps.setString(2, "0");
                 ps.addBatch();
                 
                 ps.executeBatch();

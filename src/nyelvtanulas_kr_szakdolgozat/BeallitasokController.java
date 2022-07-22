@@ -1,11 +1,11 @@
 package nyelvtanulas_kr_szakdolgozat;
 
-import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -41,6 +41,10 @@ public class BeallitasokController implements Initializable {
     private Label            lblFeluletNyelve;
     @FXML
     private ComboBox<String> cbxFeluletNyelve;
+    @FXML
+    private CheckBox         cbxEgyszer;
+    @FXML
+    private Label            lblEgyszer;
     
     
     @FXML
@@ -71,6 +75,11 @@ public class BeallitasokController implements Initializable {
         DB.beallitastModosit("forrasNyelvSetting", forrasNyelvKod);
         DB.beallitastModosit("celNyelvSetting", celNyelvKod);
         DB.beallitastModosit("sorokSzamaSetting", (sorokSzama + ""));
+        if (cbxEgyszer.isSelected()) {
+            DB.beallitastModosit("egyszerSetting", "1");
+        } else {
+            DB.beallitastModosit("egyszerSetting", "0");
+        }
         
         Window ablak = cbxCelnyelv.getScene().getWindow();
         ablak.hide();
@@ -92,6 +101,7 @@ public class BeallitasokController implements Initializable {
         btnMentes.setText(FoablakController.beallitasokFelirat[4]);
         btnMegse.setText(FoablakController.beallitasokFelirat[5]);
         lblForrasNyelv.setText(FoablakController.beallitasokFelirat[6]);
+        lblEgyszer.setText(FoablakController.beallitasokFelirat[7]);
         
         cbxFeluletNyelve.getItems().addAll(FoablakController.nyelvek);
         cbxForrasNyelv.getItems().addAll(FoablakController.nyelvek);
@@ -100,9 +110,10 @@ public class BeallitasokController implements Initializable {
         
         cbxFeluletNyelve.setValue(FoablakController.feluletNyelvenekNeveAdottNyelven);
         cbxForrasNyelv.setValue(FoablakController.kodhozNyelv.get(FoablakController.forrasNyelvKod));
-
         cbxCelnyelv.setValue(FoablakController.kodhozNyelv.get(FoablakController.celNyelvKod));
         txtSorokSzama.setText(FoablakController.beolvasottSorokSzama + "");
+        cbxEgyszer.setSelected(DB.beallitastLekerdez("egyszerSetting").equals("1"));
+        
     }
     
 }

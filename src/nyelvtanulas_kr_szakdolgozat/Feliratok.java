@@ -63,7 +63,8 @@ public interface Feliratok {
         "Duden (kizárólag német nyelvnél elérhető)",
         "Szó fordítása:",
         "Hozzáadás",
-        "Google Translate megnyitása böngészőben"
+        "Google Translate megnyitása böngészőben",
+        "Példamondat másolás"
     };
     
     public static final String [] NYELVEK_MAGYAR = new String [] {
@@ -105,7 +106,8 @@ public interface Feliratok {
         "Sorok száma a táblázatban:",
         "Mentés",
         "Mégse",
-        "Forrás nyelv:"
+        "Forrás nyelv:",
+        "Egyszeri szavakat ne listázza:"
     };
     
     public static final HashMap<String, String> UZENETEK_MAGYAR = new HashMap<String, String>() {{
@@ -219,7 +221,8 @@ public interface Feliratok {
         "Duden (only available for german source language)",
         "Translation of the word:",
         "Add to the Database",
-        "Open Google Translate in your browser"
+        "Open Google Translate in your browser",
+        "Copy example sentence"
     };
     
     public static final String [] NYELVEK_ANGOL = new String [] {
@@ -261,7 +264,8 @@ public interface Feliratok {
         "Number of rows in the table:",
         "Save",
         "Cancel",
-        "Default Source Language:"
+        "Default Source Language:",
+        "Do not list one-time words:"
     };
     
     public static final HashMap<String, String> UZENETEK_ANGOL = new HashMap<String, String>() {{
@@ -375,7 +379,8 @@ public interface Feliratok {
          "Duden (disponible solo en alemán)",
          "Traducir palabra:",
          "Añadir",
-         "Abra el Traductor de Google en un navegador"
+         "Abra el Traductor de Google en un navegador",
+         "Copiar oración de ejemplo"
     };
     
     public static final String [] NYELVEK_SPANYOL = new String [] {
@@ -417,7 +422,8 @@ public interface Feliratok {
          "Número de filas en la tabla:",
          "Rescate",
          "Cancelar",
-         "Idioma de origen predeterminado:"
+         "Idioma de origen predeterminado:",
+         "No enumere palabras de una sola vez:"
     };
     
     public static final HashMap<String, String> UZENETEK_SPANYOL = new HashMap<String, String>() {{
@@ -533,7 +539,8 @@ public interface Feliratok {
          "Duden (disponible en allemand uniquement)",
          "Traduire le mot:",
          "Ajouter",
-         "Ouvrez Google Traduction dans votre navigateur"
+         "Ouvrez Google Traduction dans votre navigateur",
+         "Copier la phrase d'exemple"
     };
     
     public static final String [] NYELVEK_FRANCIA = new String [] {
@@ -575,7 +582,8 @@ public interface Feliratok {
          "Nombre de lignes du tableau:",
          "Porter secours",
          "Annuler",
-         "Langue source par défaut:"
+         "Langue source par défaut:",
+         "Ne listez pas les mots à usage unique :"
     };
     
     public static final HashMap<String, String> UZENETEK_FRANCIA = new HashMap<String, String>() {{
@@ -690,7 +698,8 @@ public interface Feliratok {
          "Duden",
          "Wort übersetzen:",
          "Hinzufügen",
-         "Öffnen Sie Google Translate in Ihrem Browser"
+         "Öffnen Sie Google Translate in Ihrem Browser",
+         "Beispielsatz kopieren"
     };
     
     public static final String [] NYELVEK_NEMET = new String [] {
@@ -732,7 +741,8 @@ public interface Feliratok {
          "Anzahl der Zeilen in der Tabelle:",
          "Rettung",
          "Stornieren",
-         "Standardquellsprache:"
+         "Standardquellsprache:",
+         "Nennen Sie keine einmaligen Wörter:"
     };
     
     public static final HashMap<String, String> UZENETEK_NEMET = new HashMap<String, String>() {{
@@ -846,7 +856,8 @@ public interface Feliratok {
          "Duden (disponibile solo in tedesco)",
          "Traduci parola:",
          "Inserisci",
-         "Apri Google Traduttore nel tuo browser"
+         "Apri Google Traduttore nel tuo browser",
+         "Copia la frase di esempio"
     };
     
     public static final String [] NYELVEK_OLASZ = new String [] {
@@ -888,7 +899,8 @@ public interface Feliratok {
          "Numero di righe nella tabella:",
          "Salvare",
          "Annulla",
-         "Lingua di origine predefinita:"
+         "Lingua di origine predefinita:",
+         "Non elencare parole singole:"
     };
     
     public static final HashMap<String, String> UZENETEK_OLASZ = new HashMap<String, String>() {{
@@ -1002,7 +1014,8 @@ public interface Feliratok {
          "Duden (disponível apenas em alemão)",
          "Traduzir palavra:",
          "Adicionar",
-         "Abra o Google Tradutor em seu navegador"
+         "Abra o Google Tradutor em seu navegador",
+         "Copiar frase de exemplo"
     };
     
     public static final String [] NYELVEK_PORTUGAL = new String [] {
@@ -1044,7 +1057,8 @@ public interface Feliratok {
          "Número de linhas na tabela:",
          "Resgate",
          "Cancelar",
-         "Idioma de origem padrão:"
+         "Idioma de origem padrão:",
+         "Não liste palavras únicas:"
     };
     
     public static final HashMap<String, String> UZENETEK_PORTUGAL = new HashMap<String, String>() {{
@@ -1158,7 +1172,8 @@ public interface Feliratok {
          "Duden (alleen beschikbaar in het Duits)",
          "Vertaal woord:",
          "Toevoegen",
-         "Open Google Translate in uw browser"
+         "Open Google Translate in uw browser",
+         "Voorbeeldzin kopiëren"
     };
     
     public static final String [] NYELVEK_HOLLAND = new String [] {
@@ -1200,7 +1215,8 @@ public interface Feliratok {
          "Aantal rijen in de tabel:",
          "Redden",
          "Annuleren",
-         "Standaard brontaal:"
+         "Standaard brontaal:",
+         "Noem geen eenmalige woorden:"
     };
     
     public static final HashMap<String, String> UZENETEK_HOLLAND = new HashMap<String, String>() {{
@@ -1314,7 +1330,8 @@ public interface Feliratok {
          "Duden (dostępne tylko w języku niemieckim)",
          "Przetłumacz słowo:",
          "Dodaj",
-         "Otwórz Tłumacza Google w swojej przeglądarce"
+         "Otwórz Tłumacza Google w swojej przeglądarce",
+         "Skopiuj przykładowe zdanie"
     };
     
     public static final String [] NYELVEK_LENGYEL = new String [] {
@@ -1356,7 +1373,8 @@ public interface Feliratok {
          "Liczba wierszy w tabeli:",
          "Ratować",
          "Anuluj",
-         "Domyślny język źródłowy:"
+         "Domyślny język źródłowy:",
+         "Nie wymieniaj jednorazowych słów:"
     };
     
     public static final HashMap<String, String> UZENETEK_LENGYEL = new HashMap<String, String>() {{
@@ -1470,7 +1488,8 @@ public interface Feliratok {
          "Duden (kun tilgængelig på tysk)",
          "Oversæt ord:",
          "Tilføje",
-         "Åbn Google Translate i din browser"
+         "Åbn Google Translate i din browser",
+         "Kopier eksempelsætning"
     };
     
     public static final String [] NYELVEK_DAN = new String [] {
@@ -1512,7 +1531,8 @@ public interface Feliratok {
          "Antal rækker i tabellen:",
          "Redde",
          "Afbestille",
-         "Standard kildesprog:"
+         "Standard kildesprog:",
+         "Angiv ikke engangsord:"
     };
     
     public static final HashMap<String, String> UZENETEK_DAN = new HashMap<String, String>() {{
@@ -1626,7 +1646,8 @@ public interface Feliratok {
          "Duden (k dispozici pouze v němčině)",
          "Přeložit slovo:",
          "Přidat",
-         "Otevřete ve svém prohlížeči Překladač Google"
+         "Otevřete ve svém prohlížeči Překladač Google",
+         "Zkopírujte ukázkovou větu"
     };
     
     public static final String [] NYELVEK_CSEH = new String [] {
@@ -1668,7 +1689,8 @@ public interface Feliratok {
          "Počet řádků v tabulce:",
          "Zachránit",
          "Zrušení",
-         "Výchozí zdrojový jazyk:"
+         "Výchozí zdrojový jazyk:",
+         "Neuvádějte jednorázová slova:"
     };
     
     public static final HashMap<String, String> UZENETEK_CSEH = new HashMap<String, String>() {{
@@ -1782,7 +1804,8 @@ public interface Feliratok {
          "Duden (k dispozícii iba v nemčine)",
          "Preložiť slovo:",
          "Pridať",
-         "Otvorte vo svojom prehliadači prekladač Google"
+         "Otvorte vo svojom prehliadači prekladač Google",
+         "Skopírujte vzorovú vetu"
     };
     
     public static final String [] NYELVEK_SZLOVAK = new String [] {
@@ -1824,7 +1847,8 @@ public interface Feliratok {
          "Počet riadkov v tabuľke:",
          "Záchranný",
          "Zrušiť",
-         "Predvolený zdrojový jazyk:"
+         "Predvolený zdrojový jazyk:",
+         "Neuvádzajte jednorazové slová:"
     };
     
     public static final HashMap<String, String> UZENETEK_SZLOVAK = new HashMap<String, String>() {{
@@ -1938,7 +1962,8 @@ public interface Feliratok {
          "Duden (na voljo samo v nemščini)",
          "Prevedi besedo:",
          "Dodaj",
-         "V brskalniku odprite Google Translate"
+         "V brskalniku odprite Google Translate",
+         "Prepiši primer stavka"
     };
     
     public static final String [] NYELVEK_SZLOVEN = new String [] {
@@ -1980,7 +2005,8 @@ public interface Feliratok {
          "Število vrstic v tabeli:",
          "Reševanje",
          "Prekliči",
-         "Privzeti izvorni jezik:"
+         "Privzeti izvorni jezik:",
+         "Ne navajajte enkratnih besed:"
     };
     
     public static final HashMap<String, String> UZENETEK_SZLOVEN = new HashMap<String, String>() {{

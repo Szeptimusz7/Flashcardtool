@@ -118,6 +118,8 @@ public class ForditasController implements Feliratok {
         if (!forrasNyelvKod.equals("en")) btnCambridge.setDisable(true); 
         if (!forrasNyelvKod.equals("de")) btnDuden.setDisable(true);
         
+        eredetiMondat = txaMondat.getText();
+        
         Platform.runLater(() -> {
             btnCambridge.getScene().setOnKeyPressed((final KeyEvent keyEvent) -> {
                 
