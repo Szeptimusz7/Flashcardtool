@@ -170,6 +170,7 @@ public class ForditasController implements Feliratok {
         lblSzoForditasa.setText(FoablakController.forditasFelirat[11]);
         btnHozzaadas.setText(FoablakController.forditasFelirat[12]);
         btnGoogleTranslateKivul.setText(FoablakController.forditasFelirat[13]);
+        btnPeldamondatMasolasa.setText(FoablakController.forditasFelirat[14]);
     }
 
     /**

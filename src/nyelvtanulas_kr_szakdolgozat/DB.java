@@ -243,6 +243,10 @@ public class DB {
                 ps.setString(2, "0");
                 ps.addBatch();
                 
+                ps.setString(1, "tallozasMappaSetting");
+                ps.setString(2, System.getProperty("user.home"));
+                ps.addBatch();
+                
                 ps.executeBatch();
                 kapcs.commit();
                 

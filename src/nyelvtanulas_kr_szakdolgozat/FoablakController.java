@@ -60,7 +60,7 @@ public class FoablakController implements Initializable, Feliratok {
 
     String fajlUtvonal;
     String TablaNevEleje;
-    String mappaUtvonal = System.getProperty("user.home");
+    String mappaUtvonal = "";
     int    eredetiOsszesSzo;
     int    toroltSzavak;
     int    progress = 1;
@@ -173,7 +173,7 @@ public class FoablakController implements Initializable, Feliratok {
     @FXML
     public void talloz() {
         FileChooser fc = new FileChooser();
-        File hasznaltMappa = new File(mappaUtvonal);
+        File hasznaltMappa = new File(DB.beallitastLekerdez("tallozasMappaSetting"));
         fc.setInitialDirectory(hasznaltMappa);
         File selectedFile = fc.showOpenDialog(null);
         
@@ -181,7 +181,6 @@ public class FoablakController implements Initializable, Feliratok {
             fajlUtvonal = selectedFile.getAbsolutePath();
             txaBevitel.setText("");
             lblTallozasEredmeny.setText(uzenetek.get("tallozassikeres"));
-            mappaUtvonal = fajlUtvonal.substring(0, fajlUtvonal.lastIndexOf('\\') + 1);
         } else {
             lblTallozasEredmeny.setText(uzenetek.get("tallozassikertelen"));
         }

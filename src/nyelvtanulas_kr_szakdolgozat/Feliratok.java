@@ -107,7 +107,8 @@ public interface Feliratok {
         "Mentés",
         "Mégse",
         "Forrás nyelv:",
-        "Egyszeri szavakat ne listázza:"
+        "Egyszeri szavakat ne listázza:",
+        "Mappa szöveges fájl tallózásához:"
     };
     
     public static final HashMap<String, String> UZENETEK_MAGYAR = new HashMap<String, String>() {{
@@ -265,7 +266,8 @@ public interface Feliratok {
         "Save",
         "Cancel",
         "Default Source Language:",
-        "Do not list one-time words:"
+        "Do not list one-time words:",
+        "Folder to browse a text file:"
     };
     
     public static final HashMap<String, String> UZENETEK_ANGOL = new HashMap<String, String>() {{
@@ -423,7 +425,8 @@ public interface Feliratok {
          "Rescate",
          "Cancelar",
          "Idioma de origen predeterminado:",
-         "No enumere palabras de una sola vez:"
+         "No enumere palabras de una sola vez:",
+         "Carpeta de exploración predeterminada:"
     };
     
     public static final HashMap<String, String> UZENETEK_SPANYOL = new HashMap<String, String>() {{
@@ -583,7 +586,8 @@ public interface Feliratok {
          "Porter secours",
          "Annuler",
          "Langue source par défaut:",
-         "Ne listez pas les mots à usage unique :"
+         "Ne listez pas les mots à usage unique :",
+         "Dossier de navigation par défaut :"
     };
     
     public static final HashMap<String, String> UZENETEK_FRANCIA = new HashMap<String, String>() {{
@@ -742,7 +746,8 @@ public interface Feliratok {
          "Rettung",
          "Stornieren",
          "Standardquellsprache:",
-         "Nennen Sie keine einmaligen Wörter:"
+         "Nennen Sie keine einmaligen Wörter:",
+         "Standardordner zum Durchsuchen:"
     };
     
     public static final HashMap<String, String> UZENETEK_NEMET = new HashMap<String, String>() {{
@@ -900,7 +905,8 @@ public interface Feliratok {
          "Salvare",
          "Annulla",
          "Lingua di origine predefinita:",
-         "Non elencare parole singole:"
+         "Non elencare parole singole:",
+         "Cartella di ricerca predefinita:"
     };
     
     public static final HashMap<String, String> UZENETEK_OLASZ = new HashMap<String, String>() {{
@@ -1058,7 +1064,8 @@ public interface Feliratok {
          "Resgate",
          "Cancelar",
          "Idioma de origem padrão:",
-         "Não liste palavras únicas:"
+         "Não liste palavras únicas:",
+         "Pasta de navegação padrão:"
     };
     
     public static final HashMap<String, String> UZENETEK_PORTUGAL = new HashMap<String, String>() {{
@@ -1216,7 +1223,8 @@ public interface Feliratok {
          "Redden",
          "Annuleren",
          "Standaard brontaal:",
-         "Noem geen eenmalige woorden:"
+         "Noem geen eenmalige woorden:",
+         "Standaard bladermap:"
     };
     
     public static final HashMap<String, String> UZENETEK_HOLLAND = new HashMap<String, String>() {{
@@ -1374,7 +1382,8 @@ public interface Feliratok {
          "Ratować",
          "Anuluj",
          "Domyślny język źródłowy:",
-         "Nie wymieniaj jednorazowych słów:"
+         "Nie wymieniaj jednorazowych słów:",
+         "Domyślny folder przeglądania:"
     };
     
     public static final HashMap<String, String> UZENETEK_LENGYEL = new HashMap<String, String>() {{
@@ -1532,7 +1541,8 @@ public interface Feliratok {
          "Redde",
          "Afbestille",
          "Standard kildesprog:",
-         "Angiv ikke engangsord:"
+         "Angiv ikke engangsord:",
+         "Standard browse mappe:"
     };
     
     public static final HashMap<String, String> UZENETEK_DAN = new HashMap<String, String>() {{
@@ -1690,7 +1700,8 @@ public interface Feliratok {
          "Zachránit",
          "Zrušení",
          "Výchozí zdrojový jazyk:",
-         "Neuvádějte jednorázová slova:"
+         "Neuvádějte jednorázová slova:",
+         "Výchozí složka procházení:"
     };
     
     public static final HashMap<String, String> UZENETEK_CSEH = new HashMap<String, String>() {{
@@ -1848,7 +1859,8 @@ public interface Feliratok {
          "Záchranný",
          "Zrušiť",
          "Predvolený zdrojový jazyk:",
-         "Neuvádzajte jednorazové slová:"
+         "Neuvádzajte jednorazové slová:",
+         "Predvolený priečinok na prehliadanie:"
     };
     
     public static final HashMap<String, String> UZENETEK_SZLOVAK = new HashMap<String, String>() {{
@@ -2006,7 +2018,8 @@ public interface Feliratok {
          "Reševanje",
          "Prekliči",
          "Privzeti izvorni jezik:",
-         "Ne navajajte enkratnih besed:"
+         "Ne navajajte enkratnih besed:",
+         "Privzeta mapa za brskanje:"
     };
     
     public static final HashMap<String, String> UZENETEK_SZLOVEN = new HashMap<String, String>() {{

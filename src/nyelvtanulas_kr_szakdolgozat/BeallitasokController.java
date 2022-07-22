@@ -1,5 +1,6 @@
 package nyelvtanulas_kr_szakdolgozat;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -9,6 +10,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
 import static nyelvtanulas_kr_szakdolgozat.FoablakController.uzenetek;
 import static nyelvtanulas_kr_szakdolgozat.Panel.hiba;
@@ -45,7 +48,27 @@ public class BeallitasokController implements Initializable {
     private CheckBox         cbxEgyszer;
     @FXML
     private Label            lblEgyszer;
+    @FXML
+    private Label            lblTalloz;
+    @FXML
+    private Button           btnTalloz;
     
+    
+    @FXML
+    void talloz() {
+        DirectoryChooser dc = new DirectoryChooser();
+        File hasznaltMappa = new File(DB.beallitastLekerdez("tallozasMappaSetting"));
+        dc.setInitialDirectory(hasznaltMappa);
+        File selectedDirectory = dc.showDialog(null);
+        String ujMappaUtvonal = "";
+        
+        if (selectedDirectory  != null) {
+            ujMappaUtvonal = selectedDirectory.getAbsolutePath();
+            DB.beallitastModosit("tallozasMappaSetting", ujMappaUtvonal);
+            btnTalloz.setText(ujMappaUtvonal);
+            btnTalloz.setTooltip(new Tooltip(ujMappaUtvonal));
+        } 
+    }
     
     @FXML
     void ment() {
@@ -66,6 +89,16 @@ public class BeallitasokController implements Initializable {
             return;
         }
         
+        if (sorokSzama < 1) {
+            hiba(uzenetek.get("hiba"),uzenetek.get("nemszam"));
+            return;
+        }
+        
+        String mappaUtvonal = DB.beallitastLekerdez("tallozasMappaSetting");
+        if (mappaUtvonal == null || mappaUtvonal.equals("")) {
+            DB.beallitastModosit("tallozasMappaSetting", System.getProperty("user.home"));
+        }
+        
         FoablakController.feluletNyelveKod = FoablakController.nyelvekKodja.get(feluletNyelve);
         FoablakController.forrasNyelvKod   = forrasNyelvKod;
         FoablakController.celNyelvKod      = celNyelvKod;
@@ -80,6 +113,7 @@ public class BeallitasokController implements Initializable {
         } else {
             DB.beallitastModosit("egyszerSetting", "0");
         }
+        DB.beallitastModosit("tallozasMappaSetting", mappaUtvonal);
         
         Window ablak = cbxCelnyelv.getScene().getWindow();
         ablak.hide();
@@ -102,6 +136,7 @@ public class BeallitasokController implements Initializable {
         btnMegse.setText(FoablakController.beallitasokFelirat[5]);
         lblForrasNyelv.setText(FoablakController.beallitasokFelirat[6]);
         lblEgyszer.setText(FoablakController.beallitasokFelirat[7]);
+        lblTalloz.setText(FoablakController.beallitasokFelirat[8]);
         
         cbxFeluletNyelve.getItems().addAll(FoablakController.nyelvek);
         cbxForrasNyelv.getItems().addAll(FoablakController.nyelvek);
@@ -113,6 +148,9 @@ public class BeallitasokController implements Initializable {
         cbxCelnyelv.setValue(FoablakController.kodhozNyelv.get(FoablakController.celNyelvKod));
         txtSorokSzama.setText(FoablakController.beolvasottSorokSzama + "");
         cbxEgyszer.setSelected(DB.beallitastLekerdez("egyszerSetting").equals("1"));
+        btnTalloz.setText(DB.beallitastLekerdez("tallozasMappaSetting"));
+        
+        btnTalloz.setTooltip(new Tooltip(DB.beallitastLekerdez("tallozasMappaSetting")));
         
     }
     
