@@ -68,7 +68,7 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_MAGYAR = new String [] {
-        "Angol","Spanyol","Francia","Német","Olasz","Portugál","Holland","Lengyel","Dán","Cseh","Szlovák","Szlovén","Magyar"
+        "Angol","Spanyol","Francia","Német","Olasz","Portugál","Holland","Lengyel","Dán","Cseh","Szlovák","Szlovén","Magyar","Orosz","Görög"
     };
     
     public static final String [] KIKERDEZES_MAGYARFELIRATOK = new String [] {
@@ -227,7 +227,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_ANGOL = new String [] {
-        "English","Spanish","French","German","Italian","Portuguese","Dutch","Polish","Danish","Czech","Slovak","Slovenian","Hungarian"
+        "English","Spanish","French","German","Italian","Portuguese","Dutch",
+        "Polish","Danish","Czech","Slovak","Slovenian","Hungarian","Russian","Greek"
     };
     
     public static final String [] KIKERDEZES_ANGOLFELIRATOK = new String [] {
@@ -386,7 +387,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_SPANYOL = new String [] {
-        "Inglés", "Español", "Francés", "Alemán", "Italiano", "Portugués", "Holandés", "Polaco", "Danés", "Checo", "Eslovaco", "Esloveno", "Húngaro"
+        "Inglés", "Español", "Francés", "Alemán", "Italiano", "Portugués", "Holandés", 
+        "Polaco", "Danés", "Checo", "Eslovaco", "Esloveno", "Húngaro","Ruso","Griego"
     };
     
     public static final String [] KIKERDEZES_SPANYOLFELIRATOK = new String [] {
@@ -547,7 +549,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_FRANCIA = new String [] {
-        "Anglais", "Espagnol", "Français", "Allemand", "Italien", "Portugais", "Néerlandais", "Polonais", "Danois", "Tchèque", "Slovaque", "Slovène", "Hongrois"
+        "Anglais", "Espagnol", "Français", "Allemand", "Italien", "Portugais", "Néerlandais", 
+        "Polonais", "Danois", "Tchèque", "Slovaque", "Slovène", "Hongrois","Russe","Grec"
     };
     
     public static final String [] KIKERDEZES_FRANCIAFELIRATOK = new String [] {
@@ -707,7 +710,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_NEMET = new String [] {
-        "Englisch", "Spanisch", "Französisch", "Deutsch", "Italienisch", "Portugiesisch", "Niederländisch", "Polnisch", "Dänisch", "Tschechisch", "Slowakisch", "Slowenisch", "Ungarisch"
+        "Englisch", "Spanisch", "Französisch", "Deutsch", "Italienisch", "Portugiesisch", "Niederländisch", 
+        "Polnisch", "Dänisch", "Tschechisch", "Slowakisch", "Slowenisch", "Ungarisch","Russisch","Griechisch"
     };
     
     public static final String [] KIKERDEZES_NEMETFELIRATOK = new String [] {
@@ -866,7 +870,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_OLASZ = new String [] {
-        "Inglese", "Spagnolo", "Francese", "Tedesco", "Italiano", "Portoghese", "Olandese", "Polacco", "Danese", "Ceco", "Slovacco", "Sloveno", "Ungherese"
+        "Inglese", "Spagnolo", "Francese", "Tedesco", "Italiano", "Portoghese", "Olandese", 
+        "Polacco", "Danese", "Ceco", "Slovacco", "Sloveno", "Ungherese","Russo","Greco"
     };
     
     public static final String [] KIKERDEZES_OLASZFELIRATOK = new String [] {
@@ -1025,7 +1030,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_PORTUGAL = new String [] {
-        "Inglês", "Espanhol", "Francês", "Alemão", "Italiano", "Português", "Holandês", "Polonês", "Dinamarquês", "Tcheco", "Eslovaco", "Esloveno", "Húngaro"
+        "Inglês", "Espanhol", "Francês", "Alemão", "Italiano", "Português", "Holandês", 
+        "Polonês", "Dinamarquês", "Tcheco", "Eslovaco", "Esloveno", "Húngaro","Russo","Grego"
     };
     
     public static final String [] KIKERDEZES_PORTUGALFELIRATOK = new String [] {
@@ -1184,7 +1190,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_HOLLAND = new String [] {
-        "Engels", "Spaans", "Frans", "Duits", "Italiaans", "Portugees", "Nederlands", "Pools", "Deens", "Tsjechisch", "Slowaaks", "Sloveens", "Hongaars"
+        "Engels", "Spaans", "Frans", "Duits", "Italiaans", "Portugees", "Nederlands", 
+        "Pools", "Deens", "Tsjechisch", "Slowaaks", "Sloveens", "Hongaars","Russisch","Grieks"
     };
     
     public static final String [] KIKERDEZES_HOLLANDFELIRATOK = new String [] {
@@ -1343,7 +1350,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_LENGYEL = new String [] {
-        "Angielski", "Hiszpański", "Francuski", "Niemiecki", "Włoski", "Portugalski", "Niderlandzki", "Polski", "Duński", "Czeski", "Słowacki", "Słoweński", "Węgierski"
+        "Angielski", "Hiszpański", "Francuski", "Niemiecki", "Włoski", "Portugalski", "Niderlandzki", 
+        "Polski", "Duński", "Czeski", "Słowacki", "Słoweński", "Węgierski","Rosyjski","Grecka"
     };
     
     public static final String [] KIKERDEZES_LENGYELFELIRATOK = new String [] {
@@ -1502,7 +1510,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_DAN = new String [] {
-        "Engelsk", "Spansk", "Fransk", "Tysk", "Italiensk", "Portugisisk", "Hollandsk", "Polsk", "Dansk", "Tjekkisk", "Slovakisk", "Slovensk", "Ungarsk"
+        "Engelsk", "Spansk", "Fransk", "Tysk", "Italiensk", "Portugisisk", "Hollandsk", 
+        "Polsk", "Dansk", "Tjekkisk", "Slovakisk", "Slovensk", "Ungarsk","Russisk","Græsk"
     };
     
     public static final String [] KIKERDEZES_DANFELIRATOK = new String [] {
@@ -1661,7 +1670,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_CSEH = new String [] {
-        "Angličtina", "Španělština", "Francouzština", "Němčina", "Italština", "Portugalština", "Holandština", "Polština", "Dánština", "Čeština", "Slovenština", "Slovinština", "Maďarština"
+        "Angličtina", "Španělština", "Francouzština", "Němčina", "Italština", "Portugalština", "Holandština", 
+        "Polština", "Dánština", "Čeština", "Slovenština", "Slovinština", "Maďarština","Ruský","Řecký"
     };
     
     public static final String [] KIKERDEZES_CSEHFELIRATOK = new String [] {
@@ -1820,7 +1830,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_SZLOVAK = new String [] {
-        "Angličtina", "Španielčina", "Francúzština", "Nemčina", "Taliančina", "Portugalčina", "Holandčina", "Poľština", "Dánčina", "Čeština", "Slovenčina", "Slovinčina", "Maďarčina"
+        "Angličtina", "Španielčina", "Francúzština", "Nemčina", "Taliančina", "Portugalčina", "Holandčina", 
+        "Poľština", "Dánčina", "Čeština", "Slovenčina", "Slovinčina", "Maďarčina","Ruský","Grécky"
     };
     
     public static final String [] KIKERDEZES_SZLOVAKFELIRATOK = new String [] {
@@ -1979,7 +1990,8 @@ public interface Feliratok {
     };
     
     public static final String [] NYELVEK_SZLOVEN = new String [] {
-        "Angleščina", "Španščina", "Francoščina", "Nemščina", "Italijanščina", "Portugalščina", "Nizozemščina", "Poljščina", "Danska", "Češčina", "Slovaščina", "Slovenščina", "Madžarščina"
+        "Angleščina", "Španščina", "Francoščina", "Nemščina", "Italijanščina", "Portugalščina", "Nizozemščina", 
+        "Poljščina", "Danska", "Češčina", "Slovaščina", "Slovenščina", "Madžarščina","Ruski","Grški"
     };
     
     public static final String [] KIKERDEZES_SZLOVENFELIRATOK = new String [] {
@@ -2075,6 +2087,327 @@ public interface Feliratok {
         // Panel igen-nem gomb
         put("igen",                       "Da");
         put("nem",                        "Ne");
+
+    }};
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // OROSZ FELIRATOK
+    ////////////////////////////////////////////////////////////////////////////
+    
+    public static final String [] FOABLAK_OROSZFELIRATOK = new String [] {
+        "Параметры",
+        "Создать ANKI-импорт",
+        "Обзорные карточки",
+        "Статистика",
+        "Выход",
+        "Другое",
+        "О",
+        "Параметры ввода данных:",
+        "Просмотр внешнего текстового файла",
+        "Browse",
+        "- Копировать текст непосредственно в текстовое поле",
+        "Не перечислять одноразовые слова:",
+        "Исходный язык (требуется)",
+        "Обработка данных",
+        "Результат обработки",
+        "Слово для изучения (1)",
+        "Настройки",
+        "Отмена (2)",
+        "Слова",
+        "Предложения",
+        "Частота",
+        "Сколько текста известно:",
+        "Индекс читабельности:",
+        "Язык",
+        "",
+        "",
+        "Следующая страница",
+        "Завершить"
+    };
+    
+    public static final String [] ANKI_OROSZFELIRATOK = new String [] {
+        "Пожалуйста, выберите язык импорта ANKI",
+        "Создать карточки",
+        "Отмена"
+    };
+    
+    public static final String [] FORDITAS_OROSZFELIRATOK = new String [] {
+         "Пожалуйста, предоставьте перевод перед добавлением слова в базу данных",
+        "Статья:",
+        "Слово",
+        "Слово начинается с заглавной буквы:",
+        "Пример предложения",
+        "Восстановить предложение",
+        "Предыдущее предложение",
+        "Следующее предложение",
+        "Google Translate здесь",
+        "Кембриджский словарь (доступен только для английского языка)",
+        "Duden (доступен только для немецкого языка)",
+        "Перевод слова:",
+        "Добавить в базу данных",
+        "Открыть Google Translate в браузере",
+        "Скопировать пример предложения"
+    };
+    
+    public static final String [] NYELVEK_OROSZ = new String [] {
+        "английский", "испанский", "французский", "немецкий", "итальянский", "португальский", "голландский", 
+        "польский", "датский", "чешский", "словацкий", "словенский", "венгерский","Русский","Греция"
+    };
+    
+    public static final String [] KIKERDEZES_OROSZFELIRATOK = new String [] {
+         "Пожалуйста, выберите язык:",
+        "Начать просмотр",
+        "Показать ответ",
+        "Снова",
+        "Трудный",
+        "Хорошо",
+        "Легко"
+    };
+    
+    public static final String [] STATISZTIKA_OROSZFELIRATOK = new String [] {
+        "Статистика",
+        "Пожалуйста, выберите язык:",
+        "Все слова:",
+        "Известные слова:",
+        "",
+        "Все слова для изучения:",
+        "Экспортированные слова для изучения:",
+        "Неэкспортированные слова для изучения:"
+    };
+    
+    public static final String [] NEVJEGY_OROSZFELIRATOK = new String [] {
+        "Разработчик:",
+        "Версия:",
+        "Документация разработчика",
+        "Страница на Github"
+    };
+    
+    public static final String [] BEALLITASOK_OROSZFELIRATOK = new String [] {
+        "Параметры",
+        "Язык отображения:",
+        "Ваш язык:",
+        "Количество строк в таблице:",
+        "Сохранить",
+        "Отменить",
+        "Язык источника по умолчанию:",
+        "Не перечислять одноразовые слова:",
+        "Папка для просмотра текстового файла:"
+    };
+    
+    public static final HashMap<String, String> UZENETEK_OROSZ = new HashMap<String, String>() {{
+        // Főablak üzenetei
+        put("tallozassikeres", "Просмотр успешен!");
+        put("tallozassikertelen", "Просмотр не удался!");
+        put("uresszovegmezo", "Пустое текстовое поле! Пожалуйста, введите текст или воспользуйтесь кнопкой");
+        put("forrasnyelvis", "Пожалуйста, укажите также язык источника!");
+        put("feldolgozasfolyamatban", "Идет обработка данных");
+        put("nincseredmeny", "После удаления неверных символов и синхронизации базы данных результаты не были отображены!");
+        put("feldolgozasbefejezodott", "Обработка данных завершена!");
+        put("forditashozzaadas", "Добавить перевод, загрузить в базу данных");
+        put("nemerhetoel", "Недоступно");
+        put("ellenorizelsouzenet", "Данные не обработаны, пожалуйста, введите исходные данные и выберите кнопку Обработка данных");
+        put("ellenorizmasodikuzenet", "В таблице не выбрано ни одной строки!");
+        put("kijelololtsornalnincsvaltozas", "В выбранной строке нет изменений, которые можно отменить!");
+        put("ankiimportelkeszites", "Создать ANKI-импорт");
+        put("adatbazisstatisztika", "База данных статистики");
+        put("szavakkikerdezese", "Просмотр флэшкарт");
+        put("bezaras", "Вы уверены, что хотите закрыть программу?");
+        put("nevjegy", "Программа изучения языка");
+        
+        // Anki-import ablak üzenetei
+        put("akarankiimportotkesziteni", "Вы действительно хотите создавать ANKI-импорт из каждого нового слова, которое вы учите?");
+        put("hibaskartyakeszites", "При создании карточки произошла ошибка!");
+        put("kartyakelkeszitve", "Карточки успешно созданы в файле: ");
+        put("fajlba", "_ankiimport!");
+        put("nincstanulando", "Нет слова, из которого можно было бы составить карточку слова!");
+        put("adjameganyelvet", "Пожалуйста, введите язык!");
+        
+        // Fordítás ablak üzenetei
+        put("irjonbeforditast", "Пожалуйста, введите перевод слова!");
+        put("nincspeldamondat", "Нет примера предложения!");
+        
+        // Kikérdezés ablak üzenetei
+        put("melyiknyelv", "Пожалуйста, выберите, для какого языка вы хотите использовать карточки со словами");
+        put("nincsentanulando", "Сейчас нет слов для изучения!");
+        put("kikerdezesvege", "Просмотр окончен!");
+        
+        // Beállítás ablak üzenetei
+        put("beallitasok", "Настройки");
+        put("nemszam", "Введите целое положительное число! (x > 0)");
+        put("adjonmegmindenadatot", "Пожалуйста, введите все данные!");
+        
+        // Заголовок панели feliratok
+        put("tajekoztat", "Готово!");
+        put("figyelmeztet", "Внимание!");
+        put("hiba", "Ошибка!");
+        put("kilepesmegerosites", "Подтверждение выхода");
+        put("ankiimportkeszites", "Создание карт ANKI");
+        put("kártyakesziteseredmeny", "Результат создания карты");
+        
+        // Панель igen-nem gomb
+        put("igen", "Да");
+        put("nem", "No");
+
+    }};
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // GÖRÖG FELIRATOK
+    ////////////////////////////////////////////////////////////////////////////
+    
+    public static final String [] FOABLAK_GOROGFELIRATOK = new String [] {
+        "Επιλογές",
+        "Create ANKI-import",
+        "Κάρτες αναθεώρησης",
+        "Στατιστικά",
+        "Έξοδος",
+        "Άλλα",
+        "Σχετικά",
+        "Επιλογές εισαγωγής δεδομένων:",
+        "- Αναζήτηση εξωτερικού αρχείου κειμένου",
+        "Περιηγηθείτε στο",
+        "- Αντιγραφή κειμένου απευθείας στο πλαίσιο κειμένου",
+        "Μην απαριθμείτε λέξεις μιας χρήσης:",
+        "Γλώσσα προέλευσης (υποχρεωτική)",
+        "Επεξεργασία δεδομένων",
+        "Αποτέλεσμα της επεξεργασίας",
+        "Λέξη προς εκμάθηση (1)",
+        "Ρυθμίσεις",
+        "Αναίρεση (2)",
+        "Λέξεις",
+        "Προτάσεις",
+        "Συχνότητα",
+        "Πόσο μεγάλο μέρος του κειμένου είναι γνωστό:",
+        "Δείκτης αναγνωσιμότητας:",
+        "Γλώσσα",
+        "",
+        "",
+        "Επόμενη σελίδα",
+        "Φινίρισμα"
+
+    };
+    
+    public static final String [] ANKI_GOROGFELIRATOK = new String [] {
+        "Παρακαλώ επιλέξτε τη γλώσσα εισαγωγής ANKI",
+        "Δημιουργία καρτών",
+        "Ακύρωση"
+    };
+
+    public static final String [] FORDITAS_GOROGFELIRATOK = new String [] {
+        "Παρακαλώ δώστε μια μετάφραση πριν προσθέσετε λέξη στη βάση δεδομένων",
+        "Άρθρο:",
+        "Word",
+        "Η λέξη αρχίζει με κεφαλαίο γράμμα:",
+        "Παράδειγμα πρότασης",
+        "Επαναφορά πρότασης",
+        "Προηγούμενη πρόταση",
+        "Επόμενη πρόταση",
+        "Google Translate εδώ",
+        "Cambridge Dictionary (διαθέσιμο μόνο για την αγγλική γλώσσα προέλευσης)",
+        "Duden (διαθέσιμο μόνο για τη γερμανική γλώσσα προέλευσης)",
+        "Μετάφραση της λέξης:",
+        "Προσθήκη στη βάση δεδομένων",
+        "Άνοιγμα του Google Translate στο πρόγραμμα περιήγησής σας",
+        "Αντιγραφή πρότασης παραδείγματος"
+    };
+    
+    public static final String [] NYELVEK_GOROG = new String [] {
+        "Αγγλικά", "Ισπανικά", "Γαλλικά", "Γερμανικά", "Ιταλικά", "Πορτογαλικά", "Ολλανδικά", "Πολωνικά", 
+        "Δανικά", "Τσεχικά", "Σλοβακικά", "Σλοβενικά", "Ουγγρικά","Ρωσική","Ελληνική"
+    };
+    
+    public static final String [] KIKERDEZES_GOROGFELIRATOK = new String [] {
+        "Παρακαλώ επιλέξτε τη γλώσσα:",
+        "Έναρξη αναθεώρησης",
+        "Εμφάνιση απάντησης",
+        "Ξανά",
+        "Δύσκολο",
+        "Καλή",
+        "Εύκολο"
+    };
+    
+    public static final String [] STATISZTIKA_GOROGFELIRATOK = new String [] {
+        "Στατιστικά",
+        "Παρακαλώ επιλέξτε μια γλώσσα:",
+        "Όλες οι λέξεις:",
+        "Γνωστές λέξεις:",
+        "",
+        "Όλες οι λέξεις προς εκμάθηση:",
+        "Εξαγόμενες λέξεις προς εκμάθηση:",
+        "Μη εξαγόμενες λέξεις προς εκμάθηση:"
+    };
+    
+    public static final String [] NEVJEGY_GOROGFELIRATOK = new String [] {
+        "Προγραμματιστής:",
+        "Έκδοση:",
+        "Τεκμηρίωση προγραμματιστή",
+        "Σελίδα Github"
+    };
+    
+    public static final String [] BEALLITASOK_GOROGFELIRATOK = new String [] {
+        "Ρυθμίσεις",
+        "Γλώσσα οθόνης:",
+        "Η γλώσσα σας:",
+        "Αριθμός γραμμών στον πίνακα:",
+        "Αποθήκευση",
+        "Ακύρωση",
+        "Προεπιλεγμένη γλώσσα προέλευσης:",
+        "Μην αναφέρετε λέξεις μιας χρήσης:",
+        "Φάκελος για την περιήγηση σε αρχείο κειμένου:"
+    };
+    
+    public static final HashMap<String, String> UZENETEK_GOROG = new HashMap<String, String>() {{
+        // Főablak üzenetei
+        put("tallozassikeres", "Αναζήτηση επιτυχής!");
+        put("tallozassikertelen", "Η περιήγηση απέτυχε!");
+        put("uresszovegmezo", "Άδειο πλαίσιο κειμένου! Παρακαλούμε εισάγετε κείμενο ή χρησιμοποιήστε το κουμπί Περιήγηση!");
+        put("forrasnyelvis", "Παρακαλώ καθορίστε και τη γλώσσα προέλευσης!");
+        put("processedozasfolyamatban", "Επεξεργασία δεδομένων σε εξέλιξη");
+        put("nincseredmeny", "Μετά την αφαίρεση των λανθασμένων χαρακτήρων και το συγχρονισμό της βάσης δεδομένων, δεν εμφανίστηκαν αποτελέσματα!");
+        put("feldolgozasbefejezodott", "Η επεξεργασία δεδομένων ολοκληρώθηκε!");
+        put("forditashozzaadas", "Προσθήκη μετάφρασης, μεταφόρτωση στη βάση δεδομένων");
+        put("nemerhetoel", "Not available");
+        put("ellenorizelsouzenet", "Δεν έχει γίνει επεξεργασία δεδομένων, παρακαλούμε εισάγετε τα δεδομένα εισαγωγής σας και επιλέξτε το κουμπί 'Επεξεργασία δεδομένων'!");
+        put("ellenorizmasodikuzenet", "Δεν έχουν επιλεγεί γραμμές στον πίνακα!");
+        put("kijeloltsornalnincsvaltozas", "Δεν υπάρχει καμία αλλαγή στην επιλεγμένη γραμμή που μπορεί να αναιρεθεί!");
+        put("ankiimportelkeszites", "Δημιουργία ANKI-εισαγωγής");
+        put("adatbazisstatisztika", "Βάση δεδομένων στατιστικών");
+        put("szavakkikerdezese", "Κάρτες ανασκόπησης");
+        put("bezaras", "Είστε σίγουροι ότι θέλετε να κλείσετε το πρόγραμμα;");
+        put("nevjegy", "Πρόγραμμα εκμάθησης γλωσσών");
+        
+        // Anki-import ablak üzenetei
+        put("akarankiimportotkesziteni", "Θέλετε πραγματικά να δημιουργείτε ANKI-import από κάθε νέα λέξη που μαθαίνετε;");
+        put("hibaskartyakeszites", "Προέκυψε σφάλμα κατά τη δημιουργία της κάρτας!");
+        put("kartyakelkeszitve", "Οι κάρτες δημιουργήθηκαν επιτυχώς στο αρχείο: ");
+        put("fajlba", " _ankiimport!");
+        put("nincstanulando", "Δεν υπάρχει καμία λέξη για να μάθουμε από την οποία να φτιάξουμε μια κάρτα λέξεων!");
+        put("adjameganyelvet", "Παρακαλώ εισάγετε τη γλώσσα!");
+        
+        // Fordítás ablak üzenetei
+        put("irjonbeforditast", "Παρακαλώ εισάγετε μια μετάφραση για τη λέξη!");
+        put("nincspeldamondat", "Δεν υπάρχει παράδειγμα πρότασης!");
+        
+        // Kikérdezés ablak üzenetei
+        put("melyiknyelv", "Παρακαλώ επιλέξτε ποια γλώσσα θέλετε να χρησιμοποιήσετε τις κάρτες λέξεων");
+        put("nincsentanulando", "Δεν υπάρχουν λέξεις προς εκμάθηση αυτή τη στιγμή!");
+        put("kikerdezesvege", "Η επανεξέταση τελείωσε!");
+        
+        // Beállítás ablak üzenetei
+        put("beallitasok", "Ρυθμίσεις");
+        put("nemszam", "Enter a positive integer! (x > 0)");
+        put("adjonmegmindenadatot", "Παρακαλώ εισάγετε όλα τα δεδομένα!");
+        
+        // Επικεφαλίδα πίνακα feliratok
+        put("tajekoztat", "Έτοιμο!");
+        put("προειδοποίηση", "Προσοχή!");
+        put("hiba", "Σφάλμα!");
+        put("kilepesmegerosites", "Επιβεβαίωση εξόδου");
+        put("ankiimportkeszites", "Δημιουργία καρτών ANKI");
+        put("kártyakesziteseredmeny", "Αποτέλεσμα κατασκευής καρτών");
+        
+        // Panel igen-nem gomb
+        put("igen", "Ναι");
+        put("nem", "Όχι");
 
     }};
 }

@@ -336,10 +336,13 @@ public class FoablakController implements Initializable, Feliratok {
         
         // Szó elejének megtisztítása az első szöveges karakterig
         char karakter = szoveg.charAt(eleje);
-        while (karakter < 'A' 
-                || (karakter > 'z' && karakter < 192) 
-                || (karakter > 'Z' && karakter < 'a') 
-                || (karakter > 687) ){
+        while (karakter < 65 
+                || (karakter > 90 && karakter < 97)
+                || (karakter > 122 && karakter < 192) 
+                || (karakter > 687 && karakter < 913) 
+                || (karakter > 969 && karakter < 1024)
+                || (karakter > 1279 && karakter < 7838)
+                || (karakter > 7838)){
             if (eleje == szoveg.length()-1) return "";
             
             eleje++;
@@ -348,10 +351,13 @@ public class FoablakController implements Initializable, Feliratok {
         
         // Különben ha nem fogyott el a szó, akkor a szó végéről indulva is megtisztítja
         karakter = szoveg.charAt(vege);
-        while (karakter < 'A' 
-                || (karakter > 'z' && karakter < 192) 
-                || (karakter > 'Z' && karakter < 'a') 
-                || (karakter > 687) ){
+        while (karakter < 65 
+                || (karakter > 90 && karakter < 97)
+                || (karakter > 122 && karakter < 192) 
+                || (karakter > 687 && karakter < 913) 
+                || (karakter > 969 && karakter < 1024)
+                || (karakter > 1279 && karakter < 7838)
+                || (karakter > 7838)){
             if (vege == 0) return "";
             
             vege--;
@@ -978,6 +984,34 @@ public class FoablakController implements Initializable, Feliratok {
                 uzenetek           = UZENETEK_SZLOVEN;
                 beallitasokFelirat = BEALLITASOK_SZLOVENFELIRATOK;
                 
+        } else if (nyelv.equals("ru")) {
+            
+                feluletNyelvenekNeveAdottNyelven = "Русский";
+            
+                foablakFelirat     = FOABLAK_OROSZFELIRATOK;
+                ankiFelirat        = ANKI_OROSZFELIRATOK;
+                forditasFelirat    = FORDITAS_OROSZFELIRATOK;
+                nyelvek            = NYELVEK_OROSZ;
+                kikerdezesFelirat  = KIKERDEZES_OROSZFELIRATOK;
+                statisztikaFelirat = STATISZTIKA_OROSZFELIRATOK;
+                nevjegyFelirat     = NEVJEGY_OROSZFELIRATOK;
+                uzenetek           = UZENETEK_OROSZ;
+                beallitasokFelirat = BEALLITASOK_OROSZFELIRATOK;
+                
+        } else if (nyelv.equals("el")) {
+            
+                feluletNyelvenekNeveAdottNyelven = "Ελληνική";
+            
+                foablakFelirat     = FOABLAK_GOROGFELIRATOK;
+                ankiFelirat        = ANKI_GOROGFELIRATOK;
+                forditasFelirat    = FORDITAS_GOROGFELIRATOK;
+                nyelvek            = NYELVEK_GOROG;
+                kikerdezesFelirat  = KIKERDEZES_GOROGFELIRATOK;
+                statisztikaFelirat = STATISZTIKA_GOROGFELIRATOK;
+                nevjegyFelirat     = NEVJEGY_GOROGFELIRATOK;
+                uzenetek           = UZENETEK_GOROG;
+                beallitasokFelirat = BEALLITASOK_GOROGFELIRATOK;
+                
         } else { 
             
                 feluletNyelvenekNeveAdottNyelven = "English";
@@ -996,7 +1030,7 @@ public class FoablakController implements Initializable, Feliratok {
         /* Beállítja a legördülő lista nyelveit (a felületen használt nyelven) és
            a nyelvek nevéhez statikus hashmap-ben hozzárendeli a nyelv kódját (más
            osztály használni tudja a nyelvkód megállapításához */
-        String roviditettNyelv [] = {"en","es","fr","de","it","pt","nl","pl","da","cs","sk","sl","hu"};
+        String roviditettNyelv [] = {"en","es","fr","de","it","pt","nl","pl","da","cs","sk","sl","hu","ru","el"};
         cbxForras.getItems().clear();
         cbxForras.getItems().addAll(nyelvek);
         for (int i = 0; i < nyelvek.length; i++) {
