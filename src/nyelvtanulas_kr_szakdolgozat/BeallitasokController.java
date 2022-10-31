@@ -22,36 +22,21 @@ import static nyelvtanulas_kr_szakdolgozat.Panel.hiba;
  */
 public class BeallitasokController implements Initializable {
     
-    @FXML
-    private Label            lblForrasNyelv;
-    @FXML
-    private Label            lblCelnyelv;
-    @FXML
-    private Label            lblBeallitasok;
-    @FXML
-    private Label            lblSorokSzama;
-    @FXML
-    private Button           btnMentes;
-    @FXML
-    private Button           btnMegse;
-    @FXML
-    private TextField        txtSorokSzama;
-    @FXML
-    private ComboBox<String> cbxForrasNyelv;
-    @FXML
-    private ComboBox<String> cbxCelnyelv;
-    @FXML
-    private Label            lblFeluletNyelve;
-    @FXML
-    private ComboBox<String> cbxFeluletNyelve;
-    @FXML
-    private CheckBox         cbxEgyszer;
-    @FXML
-    private Label            lblEgyszer;
-    @FXML
-    private Label            lblTalloz;
-    @FXML
-    private Button           btnTalloz;
+    @FXML private Label            lblForrasNyelv;
+    @FXML private Label            lblCelnyelv;
+    @FXML private Label            lblBeallitasok;
+    @FXML private Label            lblSorokSzama;
+    @FXML private Button           btnMentes;
+    @FXML private Button           btnMegse;
+    @FXML private TextField        txtSorokSzama;
+    @FXML private ComboBox<String> cbxForrasNyelv;
+    @FXML private ComboBox<String> cbxCelnyelv;
+    @FXML private Label            lblFeluletNyelve;
+    @FXML private ComboBox<String> cbxFeluletNyelve;
+    @FXML private CheckBox         cbxEgyszer;
+    @FXML private Label            lblEgyszer;
+    @FXML private Label            lblTalloz;
+    @FXML private Button           btnTalloz;
     
     
     @FXML

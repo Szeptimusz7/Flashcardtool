@@ -356,6 +356,50 @@ public class DB {
         }
     }
     
+    public static ArrayList<Sor> mindenTanulandotLekerdez(String nyelvkodja) {
+        ArrayList<Sor> rekordok = new ArrayList<>();
+        String query = "SELECT * FROM " + nyelvkodja + "_tanulando";
+        try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
+            PreparedStatement ps = kapcs.prepareStatement(query)) {
+            
+            ResultSet eredmeny = ps.executeQuery();
+            while (eredmeny.next()) {
+                rekordok.add(new Sor(
+                                     eredmeny.getString("nevelo"),
+                                     eredmeny.getString("szavak"),
+                                     eredmeny.getString("mondatok"),
+                                     eredmeny.getString("forditas")));
+            }
+            return rekordok;
+            
+        } catch (SQLException e) {
+            hiba(uzenetek.get("hiba"),e.getMessage());
+            return rekordok;
+        }
+    }
+    
+    public static ArrayList<Sor> mindenIsmertetLekerdez(String nyelvkodja) {
+        ArrayList<Sor> rekordok = new ArrayList<>();
+        String query = "SELECT * FROM " + nyelvkodja + "_szavak";
+        try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
+            PreparedStatement ps = kapcs.prepareStatement(query)) {
+            
+            ResultSet eredmeny = ps.executeQuery();
+            while (eredmeny.next()) {
+                rekordok.add(new Sor(
+                                     "",
+                                     eredmeny.getString("szavak"),
+                                     "",
+                                     ""));
+            }
+            return rekordok;
+            
+        } catch (SQLException e) {
+            hiba(uzenetek.get("hiba"),e.getMessage());
+            return rekordok;
+        }
+    }
+    
     /**
      * Az adott tanulandó szónak beállítja a következő kikérdezési idejét.
      * @param tabla             A tanulandó tábla neve

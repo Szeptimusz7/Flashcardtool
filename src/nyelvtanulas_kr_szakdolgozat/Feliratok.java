@@ -111,6 +111,29 @@ public interface Feliratok {
         "Mappa szöveges fájl tallózásához:"
     };
     
+    public static final String [] BONGESZO_MAGYARFELIRATOK = new String [] {
+        "Státusz:",
+        "Ismert",
+        "Tanulandó",
+        "Nyelv:",
+        "Szűrők:",
+        "Névelőre szűrés:",
+        "Szóra szűrés",
+        "Fordításra szűrés",
+        "Mondatra szűrés",
+        "Végrehajt",
+        "Névelő",
+        "Szó",
+        "Fordítás",
+        "Mondat",
+        "Névelő",
+        "Szó",
+        "Fordítás",
+        "Mondat",
+        "Változtatás végrehajtása adott sornál",
+        "Sor törlése"
+    };
+    
     public static final HashMap<String, String> UZENETEK_MAGYAR = new HashMap<String, String>() {{
         // Főablak üzenetei
         put("tallozassikeres",            "Tallózás sikeres!");

@@ -22,14 +22,10 @@ import static nyelvtanulas_kr_szakdolgozat.Panel.hiba;
  */
 public class NevjegyController implements Initializable, Feliratok {
 
-    @FXML
-    private Label  lblKeszito;
-    @FXML
-    private Label  lblVerzio;
-    @FXML
-    private Button btnFejlesztoiDok;
-    @FXML
-    private Button btnGithub;
+    @FXML private Label  lblKeszito;
+    @FXML private Label  lblVerzio;
+    @FXML private Button btnFejlesztoiDok;
+    @FXML private Button btnGithub;
     
     /**
      * A gombra kattintva ha talál javadoc mappát a projekt mappájában, akkor
@@ -67,7 +63,7 @@ public class NevjegyController implements Initializable, Feliratok {
     public void initialize(URL url, ResourceBundle rb) {
         
         lblKeszito.setText(FoablakController.nevjegyFelirat[0] + " Kremmer Róbert");
-        lblVerzio.setText(FoablakController.nevjegyFelirat[1] + " 2.3.3");
+        lblVerzio.setText(FoablakController.nevjegyFelirat[1] + " 2.4.0");
         btnFejlesztoiDok.setText(FoablakController.nevjegyFelirat[2]);
         btnGithub.setText(FoablakController.nevjegyFelirat[3]);
     }    

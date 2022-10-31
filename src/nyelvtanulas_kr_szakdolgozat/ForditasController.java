@@ -29,48 +29,27 @@ import static nyelvtanulas_kr_szakdolgozat.Panel.figyelmeztet;
  */
 public class ForditasController implements Feliratok {
     
-    @FXML
-    private Label       lblMentesElottKeremAdjaMeg;
-    @FXML
-    private Label       lblSzo1;
-    @FXML
-    private Label       lblPeldamondat;
-    @FXML
-    private Button      btnGoogleTranslate;
-    @FXML
-    private Button      btnGoogleTranslateKivul;
-    @FXML
-    private Label       lblSzoForditasa;
-    @FXML
-    private Label       lblSzo;
-    @FXML
-    private TextField   txtForditas;
-    @FXML
-    private Button      btnCambridge;
-    @FXML
-    private Button      btnHozzaadas;
-    @FXML
-    private TextArea    txaMondat;
-    @FXML
-    private Button      btnEredetiPeldamondat;
-    @FXML
-    private Button      btnPeldamondatMasolasa;
-    @FXML
-    private Label       lblNagybetuvelKezdodjon;
-    @FXML
-    private CheckBox    cbxNagybetu;
-    @FXML
-    private Label       lblNevelo;
-    @FXML
-    private TextField   txtNevelo;
-    @FXML
-    private Button      btnDuden;
-    @FXML
-    private Button      btnElozo;
-    @FXML
-    private Button      btnKovetkezo;
-    @FXML
-    private WebView     wvOldal;
+    @FXML private Label       lblMentesElottKeremAdjaMeg;
+    @FXML private Label       lblSzo1;
+    @FXML private Label       lblPeldamondat;
+    @FXML private Button      btnGoogleTranslate;
+    @FXML private Button      btnGoogleTranslateKivul;
+    @FXML private Label       lblSzoForditasa;
+    @FXML private Label       lblSzo;
+    @FXML private TextField   txtForditas;
+    @FXML private Button      btnCambridge;
+    @FXML private Button      btnHozzaadas;
+    @FXML private TextArea    txaMondat;
+    @FXML private Button      btnEredetiPeldamondat;
+    @FXML private Button      btnPeldamondatMasolasa;
+    @FXML private Label       lblNagybetuvelKezdodjon;
+    @FXML private CheckBox    cbxNagybetu;
+    @FXML private Label       lblNevelo;
+    @FXML private TextField   txtNevelo;
+    @FXML private Button      btnDuden;
+    @FXML private Button      btnElozo;
+    @FXML private Button      btnKovetkezo;
+    @FXML private WebView     wvOldal;
     @FXML
     private WebView     wvOldal2;
     private WebEngine   engine;
@@ -152,7 +131,7 @@ public class ForditasController implements Feliratok {
             engine2.load("https://translate.google.com/"
                     + "?hl=" + celNyelvKod + "#view=home&op=translate&sl=" + forrasNyelvKod
                     + "&tl=" + celNyelvKod + "&text=" + szo);
-             
+            
         });
         
         // Az ablak feliratainak beállítása a megfelelő nyelven

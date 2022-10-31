@@ -35,14 +35,10 @@ import static nyelvtanulas_kr_szakdolgozat.Panel.tajekoztat;
  */
 public class AnkiController implements Initializable, Feliratok {
 
-    @FXML
-    private Label             lblKeremValasszaKi;
-    @FXML
-    private Button            btnKartyakElkeszitese;
-    @FXML
-    private Button            btnMegse;
-    @FXML
-    private ComboBox<String>  cbxNyelvek;
+    @FXML private Label             lblKeremValasszaKi;
+    @FXML private Button            btnKartyakElkeszitese;
+    @FXML private Button            btnMegse;
+    @FXML private ComboBox<String>  cbxNyelvek;
     
     /**
      * Ha van kiválasztott nyelv, akkor az ahhoz tartozó tanulandó táblában megkeresi azokat a rekordokat, amikből még nem volt

@@ -14,36 +14,21 @@ import javafx.scene.control.Label;
  */
 public class StatisztikaController implements Initializable, Feliratok {
 
-    @FXML
-    private ComboBox<String>  cbxNyelvek;
-    @FXML
-    private Label lblKeremValasszonKi;
-    @FXML
-    private Label lblIsmertSzavak;
-    @FXML
-    private Label lblFigyelmenKivulHagyott;
-    @FXML
-    private Label lblTanulandoSzavak;
-    @FXML
-    private Label lblExportaltSzavak;
-    @FXML
-    private Label lblNemExportaltSzavak;
-    @FXML
-    private Label lblStatisztika;
-    @FXML
-    private Label lblIsmertekSzama;
-    @FXML
-    private Label lblIgnoraltakSzama;
-    @FXML
-    private Label lblTanulandoOsszes;
-    @FXML
-    private Label lblImportaltTanulando;
-    @FXML
-    private Label lblNemImportaltTanulando;
-    @FXML
-    private Label lblOsszesSzo;
-    @FXML
-    private Label lblOsszes;
+    @FXML private ComboBox<String>  cbxNyelvek;
+    @FXML private Label lblKeremValasszonKi;
+    @FXML private Label lblIsmertSzavak;
+    @FXML private Label lblFigyelmenKivulHagyott;
+    @FXML private Label lblTanulandoSzavak;
+    @FXML private Label lblExportaltSzavak;
+    @FXML private Label lblNemExportaltSzavak;
+    @FXML private Label lblStatisztika;
+    @FXML private Label lblIsmertekSzama;
+    @FXML private Label lblIgnoraltakSzama;
+    @FXML private Label lblTanulandoOsszes;
+    @FXML private Label lblImportaltTanulando;
+    @FXML private Label lblNemImportaltTanulando;
+    @FXML private Label lblOsszesSzo;
+    @FXML private Label lblOsszes;
    
     /**
      * Beállítja a legördülő lista nyelveit.

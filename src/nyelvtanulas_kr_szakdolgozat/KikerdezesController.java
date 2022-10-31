@@ -22,28 +22,17 @@ public class KikerdezesController implements Initializable, Feliratok {
     int            index;
     String         forrasNyelvKod;
     
-    @FXML
-    private ComboBox<String> cbxNyelvek;
-    @FXML
-    private Label  lblKeremValasszaKi;
-    @FXML
-    private Button btnKikerdezestElindit;
-    @FXML
-    private Label  lblSzo;
-    @FXML
-    private Label  lblMondat;
-    @FXML
-    private Label  lblForditas;
-    @FXML
-    private Button btnUjra;
-    @FXML
-    private Button btnNehez;
-    @FXML
-    private Button btnJo;
-    @FXML
-    private Button btnKonnyu;
-    @FXML
-    private Button btnValasz;
+    @FXML private ComboBox<String> cbxNyelvek;
+    @FXML private Label  lblKeremValasszaKi;
+    @FXML private Button btnKikerdezestElindit;
+    @FXML private Label  lblSzo;
+    @FXML private Label  lblMondat;
+    @FXML private Label  lblForditas;
+    @FXML private Button btnUjra;
+    @FXML private Button btnNehez;
+    @FXML private Button btnJo;
+    @FXML private Button btnKonnyu;
+    @FXML private Button btnValasz;
 
     /**
      * A nyelv kiválasztása után elindítja az ahhoz a nyelvhez tartozó aktuálisan

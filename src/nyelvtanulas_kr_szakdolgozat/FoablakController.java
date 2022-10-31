@@ -90,77 +90,45 @@ public class FoablakController implements Initializable, Feliratok {
     static String [] statisztikaFelirat;
     static String [] nevjegyFelirat;
     static String [] beallitasokFelirat;
+    static String [] adatbazisBongeszoFelirat;
     
     private final ObservableList<Sor> data = FXCollections.observableArrayList();
     
-    @FXML
-    private Menu             menuOpciok;
-    @FXML
-    private MenuItem         menuiAnki;
-    @FXML
-    private MenuItem         menuiKikerdezes;
-    @FXML
-    private MenuItem         menuiStatisztika;
-    @FXML
-    private MenuItem         menuiBeallitasok;
-    @FXML
-    private MenuItem         menuiKilepes;
-    @FXML
-    private Menu             menuEgyeb;
-    @FXML
-    private MenuItem         menuiNevjegy;
-    @FXML
-    private SplitPane        anchor;
-    @FXML
-    private Label            lblLehetoseg;
-    @FXML
-    private Label            lblKulsoSzovegesTallozas;
-    @FXML
-    private Button           btnTalloz;
-    @FXML
-    private Label            lblSzovegKozvetlenBemasolas;
-    @FXML
-    private TextArea         txaBevitel;
-    @FXML
-    private Label            lblEgyszeritNeListazza;
-    @FXML
-    private Label            lblForrasnyelv;
-    @FXML
-    private Button           btnFeldolgoz;
-    @FXML
-    private CheckBox         cxbEgyszer;
-    @FXML
-    private ComboBox<String> cbxForras;
-    @FXML
-    private Label            lblTallozasEredmeny;
-    @FXML
-    private Label            lblFeldolgozasEredmeny;
-    @FXML
-    private Button           btnTanulando;
-    @FXML
-    private Button           btnVisszavon;
-    @FXML
-    private Button           btnKovetkezoOldal;
-    @FXML
-    private TextArea         txaMondat;
-    @FXML
-    private TableView<Sor>   tblTablazat;
-    @FXML
-    private TableColumn<Sor, String>  oSzo;
-    @FXML
-    private TableColumn<Sor, String>  oMondat;
-    @FXML
-    private TableColumn<Sor, Integer> oGyak;
-    @FXML
-    private Label            lblIsmertseg;
-    @FXML
-    private Label            lblSzazalekIsmert;
-    @FXML
-    private Label            lblOlvashato;
-    @FXML
-    private Label            lblOlvashatosag;
-    @FXML
-    private ProgressBar      pbarOldal;
+    @FXML private Menu             menuOpciok;
+    @FXML private MenuItem         menuiAnki;
+    @FXML private MenuItem         menuiKikerdezes;
+    @FXML private MenuItem         menuiStatisztika;
+    @FXML private MenuItem         menuiBeallitasok;
+    @FXML private MenuItem         menuiKilepes;
+    @FXML private Menu             menuEgyeb;
+    @FXML private MenuItem         menuiNevjegy;
+    @FXML private MenuItem         menuiBongeszo;
+    @FXML private SplitPane        anchor;
+    @FXML private Label            lblLehetoseg;
+    @FXML private Label            lblKulsoSzovegesTallozas;
+    @FXML private Button           btnTalloz;
+    @FXML private Label            lblSzovegKozvetlenBemasolas;
+    @FXML private TextArea         txaBevitel;
+    @FXML private Label            lblEgyszeritNeListazza;
+    @FXML private Label            lblForrasnyelv;
+    @FXML private Button           btnFeldolgoz;
+    @FXML private CheckBox         cxbEgyszer;
+    @FXML private ComboBox<String> cbxForras;
+    @FXML private Label            lblTallozasEredmeny;
+    @FXML private Label            lblFeldolgozasEredmeny;
+    @FXML private Button           btnTanulando;
+    @FXML private Button           btnVisszavon;
+    @FXML private Button           btnKovetkezoOldal;
+    @FXML private TextArea         txaMondat;
+    @FXML private TableView<Sor>   tblTablazat;
+    @FXML private TableColumn<Sor, String>  oSzo;
+    @FXML private TableColumn<Sor, String>  oMondat;
+    @FXML private TableColumn<Sor, Integer> oGyak;
+    @FXML private Label            lblIsmertseg;
+    @FXML private Label            lblSzazalekIsmert;
+    @FXML private Label            lblOlvashato;
+    @FXML private Label            lblOlvashatosag;
+    @FXML private ProgressBar      pbarOldal;
     
     private ChangeListener<Sor> listener;
 
@@ -366,6 +334,21 @@ public class FoablakController implements Initializable, Feliratok {
         return szoveg.substring(eleje, vege + 1);
     }
 
+    public void foablakotTisztit() {
+        tblTablazat.getSelectionModel().selectedItemProperty().removeListener(listener);
+        szavak_indexe.clear();
+        tblTablazat.getItems().clear();
+        data.clear();
+        txaMondat.setText("");
+        lblSzazalekIsmert.setText("");
+        dataIndex = 0;
+        vegPont = 0;
+        btnKovetkezoOldal.setDisable(false);
+        btnKovetkezoOldal.setText(foablakFelirat[26]);
+        progressbarJelenlegiErtek = 0;
+        pbarOldal.setProgress(progressbarJelenlegiErtek);
+    }
+    
     /**
      * Ha van bemenő adat a felhasználótól, akkor alaphelyzetbe állítja a főablakot,
      * beállítja a töltés ablakot, letiltja a futtatás gombot, elindítja azt a szálat
@@ -387,18 +370,7 @@ public class FoablakController implements Initializable, Feliratok {
         } else {
         
             // Korábbi listener eltávolítása, lista és hashmap adatok törlése
-            tblTablazat.getSelectionModel().selectedItemProperty().removeListener(listener);
-            szavak_indexe.clear();
-            tblTablazat.getItems().clear();
-            data.clear();
-            txaMondat.setText("");
-            lblSzazalekIsmert.setText("");
-            dataIndex = 0;
-            vegPont = 0;
-            btnKovetkezoOldal.setDisable(false);
-            btnKovetkezoOldal.setText(foablakFelirat[26]);
-            progressbarJelenlegiErtek = 0;
-            pbarOldal.setProgress(progressbarJelenlegiErtek);
+            foablakotTisztit();
             // A megadott forrásnyelv beállítása (pl: 'Német' -> 'de')
             forrasNyelvKod = nyelvekKodja.get(cbxForras.getValue());
             TablaNevEleje = forrasNyelvKod + "_";
@@ -685,6 +657,12 @@ public class FoablakController implements Initializable, Feliratok {
         foablakFeliratokatBeallit(feluletNyelveKod);
     }
     
+    @FXML
+    void adatbazisBongeszoAblak() {
+        foablakotTisztit();
+        ablakotNyit("AdatbazisBongeszo.fxml", "", "", null, false); 
+    }
+    
     /**
      * A kapott fxml fájlnév alapján új ablakot nyit meg. Ha a szó paraméter nem üres, akkor a fordítás ablakot
      * nyitja meg, ekkor az új ablakhoz tartozó controller osztályban beállítja a szó, mondat és forrás nyelv kód mezők értékeit.
@@ -813,6 +791,7 @@ public class FoablakController implements Initializable, Feliratok {
                 nevjegyFelirat     = NEVJEGY_MAGYARFELIRATOK;
                 uzenetek           = UZENETEK_MAGYAR;
                 beallitasokFelirat = BEALLITASOK_MAGYARFELIRATOK;
+                adatbazisBongeszoFelirat = BONGESZO_MAGYARFELIRATOK;
                 
         } else if (nyelv.equals("en")) {
             
