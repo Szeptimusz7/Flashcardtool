@@ -34,7 +34,6 @@
                   <TextField fx:id="txfSzoSzuro" onKeyReleased="#szurestVegrehajt" promptText="Szóra szűrés" />
                   <TextField fx:id="txfForditasSzuro" onKeyReleased="#szurestVegrehajt" promptText="Fordításra szűrés" />
                   <TextField fx:id="txfMondatSzuro" onKeyReleased="#szurestVegrehajt" promptText="Mondatra szűrés" />
-                  <Button fx:id="btnVegrehajt" mnemonicParsing="false" onAction="#szurestVegrehajt" text="Szűrés" />
                   <Button fx:id="btnSzurokTorlese" mnemonicParsing="false" onAction="#szurokTorlese" text="Szűrők törlése" />
                </children>
                <padding>

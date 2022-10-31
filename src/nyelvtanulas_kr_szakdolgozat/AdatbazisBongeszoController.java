@@ -34,7 +34,6 @@ public class AdatbazisBongeszoController implements Initializable {
     @FXML private TextField        txfForditasSzuro;
     @FXML private TextField        txfMondatSzuro;
     @FXML private TextField        txfNeveloSzuro;
-    @FXML private Button           btnVegrehajt;
     @FXML private Button           btnSzurokTorlese;
     @FXML private TableColumn<Sor, String> oSzo;
     @FXML private TableColumn<Sor, String> oForditas;
@@ -222,6 +221,75 @@ public class AdatbazisBongeszoController implements Initializable {
     @FXML
     void sortorles() {
 
+        boolean sikeresTorles = true;
+        
+        // listener törlése
+        tblTablazat.getSelectionModel().selectedItemProperty().removeListener(listener);
+        
+        // szűrő állapot mentése
+        String NeveloSzuro   = txfNeveloSzuro.getText();
+        String SzoSzuro      = txfSzoSzuro.getText();
+        String ForditasSzuro = txfForditasSzuro.getText();
+        String MondatSzuro   = txfMondatSzuro.getText();
+        
+        // kiválasztott sor adatai alapján DB-ben törölni a rekordot
+        String szo = tblTablazat.getSelectionModel().getSelectedItem().getSzo();
+        if (cbxStatus.getSelectionModel().getSelectedIndex() == 0) {
+            if (!DB.szotTorolAdatbazisbol(FoablakController.nyelvekKodja.get(cbxNyelv.getValue()) + "_szavak", szo)) sikeresTorles = false;
+            
+            for (int i = 0; i < ismertSzavak.size(); i++) {
+                if (ismertSzavak.get(i).getSzo().equals(szo)) {
+                    ismertSzavak.remove(i);
+                    break;
+                }
+            }
+            
+        } else {
+            if (!DB.szotTorolAdatbazisbol(FoablakController.nyelvekKodja.get(cbxNyelv.getValue()) + "_tanulando", szo)) sikeresTorles = false;
+            
+            for (int i = 0; i < tanulandoSzavak.size(); i++) {
+                if (tanulandoSzavak.get(i).getSzo().equals(szo)) {
+                    tanulandoSzavak.remove(i);
+                    break;
+                }
+            }
+            
+        } 
+        
+        // szűrő alapján újra filtered listet csinálni és betölteni a táblázatba
+        List<Sor> filteredList;
+        if (cbxStatus.getSelectionModel().getSelectedIndex() == 0) {
+           filteredList = ismertSzavak.stream()
+                    .filter(s -> s.getNevelo().contains(NeveloSzuro))
+                    .filter(s -> s.getSzo().contains(SzoSzuro))
+                    .filter(s -> s.getForditas().contains(ForditasSzuro))
+                    .filter(s -> s.getMondat().contains(MondatSzuro))
+                    .collect(Collectors.toList());
+        } else {
+           filteredList = tanulandoSzavak.stream()
+                    .filter(s -> s.getNevelo().contains(NeveloSzuro))
+                    .filter(s -> s.getSzo().contains(SzoSzuro))
+                    .filter(s -> s.getForditas().contains(ForditasSzuro))
+                    .filter(s -> s.getMondat().contains(MondatSzuro))
+                    .collect(Collectors.toList());
+        }
+       
+       tblTablazat.getItems().clear();
+       tblTablazat.getItems().addAll(filteredList);
+        
+        // alsó szövegmezőkből adatok törlése
+        txfNevelo.setText("");
+        txfSzo.setText("");
+        txfForditas.setText("");
+        txaMondat.setText("");
+        
+        // listener hozzáadása
+        tblTablazat.getSelectionModel().selectedItemProperty().addListener(listener);
+        
+        // Visszajelzés ablakban, hogy sikeres volt a változtatás?
+        if (!sikeresTorles) Panel.hiba("Hiba", "Nem sikerült a törlés!");
+        else Panel.tajekoztat("Info", "Sikerült a törlés!");
+        
     }
     
     @Override
@@ -243,18 +311,17 @@ public class AdatbazisBongeszoController implements Initializable {
         txfSzoSzuro.setPromptText(FoablakController.adatbazisBongeszoFelirat[6]);
         txfForditasSzuro.setPromptText(FoablakController.adatbazisBongeszoFelirat[7]);
         txfMondatSzuro.setPromptText(FoablakController.adatbazisBongeszoFelirat[8]);
-        btnVegrehajt.setText(FoablakController.adatbazisBongeszoFelirat[9]);
-        oNevelo.setText(FoablakController.adatbazisBongeszoFelirat[10]);
-        oSzo.setText(FoablakController.adatbazisBongeszoFelirat[11]);
-        oForditas.setText(FoablakController.adatbazisBongeszoFelirat[12]);
-        oMondat.setText(FoablakController.adatbazisBongeszoFelirat[13]);
-        lblNevelo.setText(FoablakController.adatbazisBongeszoFelirat[14]);
-        lblSzo.setText(FoablakController.adatbazisBongeszoFelirat[15]);
-        lblForditas.setText(FoablakController.adatbazisBongeszoFelirat[16]);
-        lblMondat.setText(FoablakController.adatbazisBongeszoFelirat[17]);
-        btnValtoztat.setText(FoablakController.adatbazisBongeszoFelirat[18]);
-        btnSorTorlese.setText(FoablakController.adatbazisBongeszoFelirat[19]);
-        btnSzurokTorlese.setText(FoablakController.adatbazisBongeszoFelirat[20]);
+        oNevelo.setText(FoablakController.adatbazisBongeszoFelirat[9]);
+        oSzo.setText(FoablakController.adatbazisBongeszoFelirat[10]);
+        oForditas.setText(FoablakController.adatbazisBongeszoFelirat[11]);
+        oMondat.setText(FoablakController.adatbazisBongeszoFelirat[12]);
+        lblNevelo.setText(FoablakController.adatbazisBongeszoFelirat[13]);
+        lblSzo.setText(FoablakController.adatbazisBongeszoFelirat[14]);
+        lblForditas.setText(FoablakController.adatbazisBongeszoFelirat[15]);
+        lblMondat.setText(FoablakController.adatbazisBongeszoFelirat[16]);
+        btnValtoztat.setText(FoablakController.adatbazisBongeszoFelirat[17]);
+        btnSorTorlese.setText(FoablakController.adatbazisBongeszoFelirat[18]);
+        btnSzurokTorlese.setText(FoablakController.adatbazisBongeszoFelirat[19]);
 
         cbxStatus.setValue(FoablakController.adatbazisBongeszoFelirat[2]);
         

@@ -166,16 +166,18 @@ public class DB {
      * @param tabla A tábla neve.
      * @param szo   A törlendő szó.
      */
-    public static void szotTorolAdatbazisbol(String tabla, String szo) {
+    public static boolean szotTorolAdatbazisbol(String tabla, String szo) {
         String delete = "DELETE FROM " + tabla + " WHERE LOWER(szavak) = ?;";
         try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
                 PreparedStatement ps = kapcs.prepareStatement(delete)) {
             
                 ps.setString(1, szo);
                 ps.executeUpdate();
+                return true;
                 
         } catch (SQLException e) {
             hiba(uzenetek.get("hiba"),e.getMessage());
+            return false;
         }
     }
     

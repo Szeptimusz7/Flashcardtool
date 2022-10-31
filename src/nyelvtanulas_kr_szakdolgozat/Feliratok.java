@@ -121,7 +121,6 @@ public interface Feliratok {
         "Szóra szűrés",
         "Fordításra szűrés",
         "Mondatra szűrés",
-        "Szűrés",
         "Névelő",
         "Szó",
         "Fordítás",
