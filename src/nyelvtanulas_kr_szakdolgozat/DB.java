@@ -74,7 +74,7 @@ public class DB {
     }
     
     /**
-     * A kapott táblához hozzáadja a kapott szót és annak állapotát.
+     * A kapott táblához hozzáadja a kapott szót
      * @param tabla   A tábla neve
      * @param szo     A kiírandó szó
      */
@@ -119,6 +119,48 @@ public class DB {
         }
     }
 
+    public static boolean ismertetModosit(String tabla, String ujSzo, String regiSzo) {
+        String update = "UPDATE " + tabla + " SET szavak = ? WHERE szavak = ?;";
+        try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
+             PreparedStatement ps = kapcs.prepareStatement(update)) {
+            
+                ps.setString(1, ujSzo);
+                ps.setString(2, regiSzo);
+                ps.executeUpdate();
+                return true;
+                
+        } catch (SQLException e) {
+            hiba(uzenetek.get("hiba"),e.getMessage());
+            return false;
+        }
+    }
+    
+    public static boolean tanulandotModosit(String tabla, String nevelo, String regiSzo, String ujSzo, String mondat, String forditas, int anki) {
+        String update = "UPDATE " + tabla + " SET nevelo = ?,"
+                                              + " szavak = ?,"
+                                              + " mondatok = ?,"
+                                              + " forditas = ?,"
+                                              + " ANKI = ?"
+                      + "WHERE szavak = ?;";
+        try (Connection kapcs = DriverManager.getConnection(adatbazisUtvonal);
+             PreparedStatement ps = kapcs.prepareStatement(update)) {
+            
+                ps.setString(1, nevelo);
+                ps.setString(2, ujSzo);
+                ps.setString(3, mondat);
+                ps.setString(4, forditas);
+                ps.setInt(5, anki);
+                ps.setString(6, regiSzo);
+                
+                ps.executeUpdate();
+                return true;
+                
+        } catch (SQLException e) {
+            hiba(uzenetek.get("hiba"),e.getMessage());
+            return false;
+        }
+    }
+    
     /**
      * A kapott táblából törli a kapott szót
      * @param tabla A tábla neve.

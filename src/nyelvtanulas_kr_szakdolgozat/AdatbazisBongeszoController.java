@@ -144,6 +144,79 @@ public class AdatbazisBongeszoController implements Initializable {
     @FXML
     void sortValtoztat() {
 
+        boolean sikeresModositas = true;
+        
+        // listener törlése
+        tblTablazat.getSelectionModel().selectedItemProperty().removeListener(listener);
+        
+        // szűrő állapot mentése
+        String NeveloSzuro   = txfNeveloSzuro.getText();
+        String SzoSzuro      = txfSzoSzuro.getText();
+        String ForditasSzuro = txfForditasSzuro.getText();
+        String MondatSzuro   = txfMondatSzuro.getText();
+        
+        // kiválasztott sor adatai alapján DB-ben módosítani a rekordot
+        String regiSzo = tblTablazat.getSelectionModel().getSelectedItem().getSzo();
+        String nevelo = txfNevelo.getText();
+        String ujSzo = txfSzo.getText();
+        String forditas = txfForditas.getText();
+        String mondat = txaMondat.getText();
+        if (cbxStatus.getSelectionModel().getSelectedIndex() == 0) {
+            if (!DB.ismertetModosit(FoablakController.nyelvekKodja.get(cbxNyelv.getValue()) + "_szavak", ujSzo, regiSzo)) sikeresModositas = false;
+            
+            for (int i = 0; i < ismertSzavak.size(); i++) {
+                if (ismertSzavak.get(i).getSzo().equals(regiSzo)) {
+                    ismertSzavak.set(i, new Sor("", ujSzo, "", ""));
+                    break;
+                }
+            }
+            
+        } else {
+            if (!DB.tanulandotModosit(FoablakController.nyelvekKodja.get(cbxNyelv.getValue()) + "_tanulando", nevelo, regiSzo, ujSzo, mondat, forditas, 0)) sikeresModositas = false;
+            
+            for (int i = 0; i < tanulandoSzavak.size(); i++) {
+                if (tanulandoSzavak.get(i).getSzo().equals(regiSzo)) {
+                    tanulandoSzavak.set(i, new Sor(nevelo, ujSzo, mondat, forditas));
+                    break;
+                }
+            }
+            
+        } 
+        
+        // szűrő alapján újra filtered listet csinálni és betölteni a táblázatba
+        List<Sor> filteredList;
+        if (cbxStatus.getSelectionModel().getSelectedIndex() == 0) {
+           filteredList = ismertSzavak.stream()
+                    .filter(s -> s.getNevelo().contains(NeveloSzuro))
+                    .filter(s -> s.getSzo().contains(SzoSzuro))
+                    .filter(s -> s.getForditas().contains(ForditasSzuro))
+                    .filter(s -> s.getMondat().contains(MondatSzuro))
+                    .collect(Collectors.toList());
+        } else {
+           filteredList = tanulandoSzavak.stream()
+                    .filter(s -> s.getNevelo().contains(NeveloSzuro))
+                    .filter(s -> s.getSzo().contains(SzoSzuro))
+                    .filter(s -> s.getForditas().contains(ForditasSzuro))
+                    .filter(s -> s.getMondat().contains(MondatSzuro))
+                    .collect(Collectors.toList());
+        }
+       
+       tblTablazat.getItems().clear();
+       tblTablazat.getItems().addAll(filteredList);
+        
+        // alsó szövegmezőkből adatok törlése
+        txfNevelo.setText("");
+        txfSzo.setText("");
+        txfForditas.setText("");
+        txaMondat.setText("");
+        
+        // listener hozzáadása
+        tblTablazat.getSelectionModel().selectedItemProperty().addListener(listener);
+        
+        // Visszajelzés ablakban, hogy sikeres volt a változtatás?
+        if (!sikeresModositas) Panel.hiba("Hiba", "Nem sikerült a módosítás!");
+        else Panel.tajekoztat("Info", "Sikerült a módosítás!");
+        
     }
 
     @FXML
