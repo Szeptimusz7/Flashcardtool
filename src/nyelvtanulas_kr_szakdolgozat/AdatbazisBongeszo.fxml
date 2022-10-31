@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="900.0" prefWidth="600" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nyelvtanulas_kr_szakdolgozat.AdatbazisBongeszoController">
+<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nyelvtanulas_kr_szakdolgozat.AdatbazisBongeszoController">
    <children>
-      <VBox prefHeight="900.0" prefWidth="800.0" spacing="5.0">
+      <VBox prefHeight="900.0" prefWidth="900.0" spacing="5.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -30,11 +30,12 @@
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Label fx:id="lblSzuro" text="Szűrők:" />
-                  <TextField fx:id="txfNeveloSzuro" promptText="Névelőre szűrés" />
-                  <TextField fx:id="txfSzoSzuro" promptText="Szóra szűrés" />
-                  <TextField fx:id="txfForditasSzuro" promptText="Fordításra szűrés" />
-                  <TextField fx:id="txfMondatSzuro" promptText="Mondatra szűrés" />
-                  <Button fx:id="btnVegrehajt" mnemonicParsing="false" onAction="#szurestVegrehajt" text="Végrehajt" />
+                  <TextField fx:id="txfNeveloSzuro" onKeyReleased="#szurestVegrehajt" promptText="Névelőre szűrés" />
+                  <TextField fx:id="txfSzoSzuro" onKeyReleased="#szurestVegrehajt" promptText="Szóra szűrés" />
+                  <TextField fx:id="txfForditasSzuro" onKeyReleased="#szurestVegrehajt" promptText="Fordításra szűrés" />
+                  <TextField fx:id="txfMondatSzuro" onKeyReleased="#szurestVegrehajt" promptText="Mondatra szűrés" />
+                  <Button fx:id="btnVegrehajt" mnemonicParsing="false" onAction="#szurestVegrehajt" text="Szűrés" />
+                  <Button fx:id="btnSzurokTorlese" mnemonicParsing="false" onAction="#szurokTorlese" text="Szűrők törlése" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

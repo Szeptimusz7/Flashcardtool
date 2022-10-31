@@ -121,7 +121,7 @@ public interface Feliratok {
         "Szóra szűrés",
         "Fordításra szűrés",
         "Mondatra szűrés",
-        "Végrehajt",
+        "Szűrés",
         "Névelő",
         "Szó",
         "Fordítás",
@@ -131,7 +131,8 @@ public interface Feliratok {
         "Fordítás",
         "Mondat",
         "Változtatás végrehajtása adott sornál",
-        "Sor törlése"
+        "Sor törlése",
+        "Szűrők törlése"
     };
     
     public static final HashMap<String, String> UZENETEK_MAGYAR = new HashMap<String, String>() {{

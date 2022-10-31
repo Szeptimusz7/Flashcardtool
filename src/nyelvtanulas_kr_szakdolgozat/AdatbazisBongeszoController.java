@@ -35,6 +35,7 @@ public class AdatbazisBongeszoController implements Initializable {
     @FXML private TextField        txfMondatSzuro;
     @FXML private TextField        txfNeveloSzuro;
     @FXML private Button           btnVegrehajt;
+    @FXML private Button           btnSzurokTorlese;
     @FXML private TableColumn<Sor, String> oSzo;
     @FXML private TableColumn<Sor, String> oForditas;
     @FXML private TableColumn<Sor, String> oMondat;
@@ -61,6 +62,15 @@ public class AdatbazisBongeszoController implements Initializable {
         if (cbxNyelv.getValue() == null || cbxStatus.getValue() == null) return;
 
         tblTablazat.getSelectionModel().selectedItemProperty().removeListener(listener);
+        
+        txfNeveloSzuro.setText("");
+        txfSzoSzuro.setText("");
+        txfForditasSzuro.setText("");
+        txfMondatSzuro.setText("");
+        txfNevelo.setText("");
+        txfSzo.setText("");
+        txfForditas.setText("");
+        txaMondat.setText("");
         
         String nyelvkod = FoablakController.nyelvekKodja.get(cbxNyelv.getValue());
         tblTablazat.getItems().clear();
@@ -117,6 +127,21 @@ public class AdatbazisBongeszoController implements Initializable {
     }
     
     @FXML
+    void szurokTorlese() {
+        txfNeveloSzuro.setText("");
+        txfSzoSzuro.setText("");
+        txfForditasSzuro.setText("");
+        txfMondatSzuro.setText("");
+        
+        txfNevelo.setText("");
+        txfSzo.setText("");
+        txfForditas.setText("");
+        txaMondat.setText("");
+       
+       szurestVegrehajt();
+    }
+    
+    @FXML
     void sortValtoztat() {
 
     }
@@ -156,17 +181,16 @@ public class AdatbazisBongeszoController implements Initializable {
         lblMondat.setText(FoablakController.adatbazisBongeszoFelirat[17]);
         btnValtoztat.setText(FoablakController.adatbazisBongeszoFelirat[18]);
         btnSorTorlese.setText(FoablakController.adatbazisBongeszoFelirat[19]);
-        
-        
-        
+        btnSzurokTorlese.setText(FoablakController.adatbazisBongeszoFelirat[20]);
+
         cbxStatus.setValue(FoablakController.adatbazisBongeszoFelirat[2]);
         
         listener = (v, regi, uj) -> {
             
-            if (uj == null) txfNevelo.setText(uj.getNevelo());
-            if (uj.getSzo()!= null) txfSzo.setText(uj.getSzo());
-            if (uj.getForditas()!= null) txfForditas.setText(uj.getForditas());
-            if (uj.getMondat()!= null) txaMondat.setText(uj.getMondat());
+            txfNevelo.setText(uj.getNevelo());
+            txfSzo.setText(uj.getSzo());
+            txfForditas.setText(uj.getForditas());
+            txaMondat.setText(uj.getMondat());
             
         };
         
